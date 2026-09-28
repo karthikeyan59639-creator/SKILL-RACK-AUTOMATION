@@ -1,0 +1,9 @@
+{
+  "pid": "2772",
+  "leftText": "Python3-H002 Strings\nString - Length\n\n\n\nThe len() function can be used to find the length of the string as shown below.\n\nname = input()\nprint(len(name))\n\n\n\u00a0\n\nProgramID- 2772  SKILLRACK\n\nPrint String Length\n\n\n\nComplete the program so that it prints the length of the input string value.\n\n\n\nMax Execution Time Limit: 5000 millisecs\nui-button\nAmbiance\nChaos\nClouds Midnight\nCobalt\nidle Fingers\nkrTheme\nMerbivore\nMerbivore Soft\nMono Industrial\nMonokai\nPastel on dark\nSolarized Dark\nTerminal\nTomorrow Night\nTomorrow Night Blue\nTomorrow Night Bright\nTomorrow Night 80s\nTwilight\nVibrant Ink\nChrome\nClouds\nCrimson Editor\nDawn\nDreamweaver\nEclipse\nGitHub\nIPlastic\nSolarized Light\nTextMate\nTomorrow\nXCode\nKuroir\nKatzenMilch\nSQL Server\n\n\nPython3 (3.12)\nPython3 (3.12)\n1\n2117250080034@rgit\n\n\n\n\n\n\nSave\n\t\nRun\n\t\n\t\t\n\n",
+  "sampleInput": "",
+  "expectedOutput": "",
+  "edVal": "",
+  "prefixCode": "",
+  "suffixCode": "1\n2117250080034@rgit"
+}
