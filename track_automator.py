@@ -105,7 +105,7 @@ def solve_captcha_if_needed(page, bm, max_attempts=5) -> bool:
     return is_problem_revealed(page)
 
 
-def wait_for_run_result(page, timeout_sec=35) -> bool:
+def wait_for_run_result(page, timeout_sec=45) -> bool:
     """Waits for test run to finish and returns True if passed."""
     start_time = time.time()
     saw_waiting = False
@@ -151,11 +151,13 @@ def wait_for_run_result(page, timeout_sec=35) -> bool:
                     return True
             elif saw_waiting and state['failed']:
                 log_warning("[RUN RESULT] Challenge run resulted in failure.")
+                page.evaluate("() => { let g = document.querySelector('#btngrp'); if (g) g.style.display = 'block'; }")
                 return False
 
         page.wait_for_timeout(1000)
 
     log_warning(f"[RUN RESULT] Run did not complete within {timeout_sec}s.")
+    page.evaluate("() => { let g = document.querySelector('#btngrp'); if (g) g.style.display = 'block'; }")
     return False
 
 
@@ -240,7 +242,16 @@ def solve_current_problem(page, bm, pm: ProgressManager) -> bool:
             page.wait_for_timeout(100)
 
         log_info("[SUBMISSION] Blanks filled. Triggering Run...")
-        run_btn.click()
+        try:
+            page.evaluate("() => { let g = document.querySelector('#btngrp'); if (g) g.style.display = 'block'; }")
+            run_btn.click(timeout=5000)
+        except Exception:
+            page.evaluate("""() => {
+                let g = document.querySelector('#btngrp');
+                if (g) g.style.display = 'block';
+                let b = document.querySelector('#j_id_bg') || document.querySelector("button[name*='Run']");
+                if (b) b.click();
+            }""")
         passed = wait_for_run_result(page)
         if passed:
             pm.record_passed(pid, full_code, 1)
@@ -313,7 +324,19 @@ def solve_current_problem(page, bm, pm: ProgressManager) -> bool:
             page.wait_for_timeout(500)
 
             log_info(f"[SUBMISSION] Attempt {attempt}: Code injected. Triggering Run...")
-            run_btn.click()
+            try:
+                page.evaluate("() => { let g = document.querySelector('#btngrp'); if (g) g.style.display = 'block'; }")
+                run_btn.click(timeout=5000)
+            except Exception:
+                page.evaluate("""() => {
+                    let g = document.querySelector('#btngrp');
+                    if (g) g.style.display = 'block';
+                    let b = document.querySelector('#j_id_bg') || document.querySelector("button[name*='Run']");
+                    if (b) {
+                        if (typeof oncompile === 'function') oncompile();
+                        b.click();
+                    }
+                }""")
             passed = wait_for_run_result(page)
             if passed:
                 pm.record_passed(pid, solved_code, attempt)
@@ -441,11 +464,61 @@ def navigate_to_track(page, track_show_id: str, part_idx: int = 0) -> bool:
     return False
 
 
+def run_track(page, bm, pm: ProgressManager, track_btn_id: str, track_name: str) -> int:
+    """Solves all parts in a track dynamically until no View buttons remain."""
+    log_info("\n" + "=" * 60)
+    log_info(f"  STARTING TRACK: {track_name}")
+    log_info(f"  Button ID: {track_btn_id}")
+    log_info("=" * 60 + "\n")
+
+    total_solved = 0
+    part_num = 1
+    while True:
+        # Navigate to CODETUTOR overview
+        page.goto("https://skillrack.com/faces/candidate/codeprogramgroup.xhtml?gt=CODETUTOR")
+        page.wait_for_load_state("domcontentloaded")
+        page.wait_for_timeout(2000)
+
+        # Expand Python Programming
+        py_btn = page.locator("tr").filter(has_text="Python Programming").locator("button:has-text('Show')").first
+        if py_btn.is_visible(timeout=4000):
+            py_btn.click()
+            page.wait_for_load_state("domcontentloaded")
+            page.wait_for_timeout(2000)
+
+        track_btn = page.locator(f"[id='{track_btn_id}']").first
+        if not track_btn.is_visible(timeout=4000):
+            log_error(f"[NAVIGATE] Track button '{track_btn_id}' not found!")
+            break
+        track_btn.click()
+        page.wait_for_load_state("domcontentloaded")
+        page.wait_for_timeout(2500)
+
+        # Find all remaining 'View' buttons (each represents an unfinished part)
+        view_btns = page.locator("button:has-text('View'), a:has-text('View')").all()
+        if not view_btns:
+            log_info(f"[{track_name} COMPLETE] All parts completed! No 'View' buttons remain!")
+            break
+
+        log_info(f"\n--- [{track_name}] FOUND {len(view_btns)} UNFINISHED PART(S). OPENING PART {part_num}... ---")
+        view_btns[0].click()
+        page.wait_for_load_state("domcontentloaded")
+        page.wait_for_timeout(2500)
+
+        # Solve all challenges in this part
+        solved_count = run_challenge_part(page, bm, pm, max_challenges=15)
+        total_solved += solved_count
+        log_info(f"--- [{track_name}] PART {part_num} FINISHED: {solved_count} solved (Total: {total_solved}) ---")
+        part_num += 1
+
+    return total_solved
+
+
 def main():
     log_info("\n" + "=" * 60)
     log_info("  SKILLRACK MULTI-TRACK RUNNER INITIALIZATION")
-    log_info("  Track 1: Python - STARTER (30 Challenges)")
-    log_info("  Track 2: PYTHON3.x - 50 VERY-EASY CHALLENGES (50 Challenges)")
+    log_info("  Track: PYTHON3.x - 50 EASY CHALLENGES (50 Challenges)")
+    log_info("  Track: PYTHON3.x - 50 AVERAGE CHALLENGES (50 Challenges)")
     log_info("=" * 60 + "\n")
 
     bm = BrowserManager(headless=False)
@@ -453,71 +526,21 @@ def main():
     bm.login_and_navigate()
     pm = ProgressManager()
 
-    # Pre-record the problems already solved in testing
-    pm.record_passed("11008", "MFIB - Add 10, 20 and 30", 1)
-    pm.record_passed("11009", "EI - Print from 1 to N", 1)
-    pm.record_passed("11010", "MFIB - Sum of Integers - List", 1)
-    pm.record_passed("11011", "MFIB - Reverse Last K Characters", 1)
-    pm.record_passed("11013", "MFIB - Odd Integers in List", 1)
-    pm.record_passed("10968", "MFIB - Increment & Decrement", 1)
-    pm.record_passed("1871", "Welcome Message", 1)
-    pm.record_passed("1872", "Repeat the input number", 1)
-    pm.record_passed("1873", "Greet by Name", 1)
-    pm.save()
-
     try:
         # =========================================================================
-        # TRACK 1: Python - STARTER (30 Challenges)
+        # TRACK: PYTHON3.x - 50 EASY CHALLENGES (50 Challenges across 5 Parts)
         # =========================================================================
-        log_info("\n>>> STARTING TRACK 1: Python - STARTER <<<")
-        nav_ok = navigate_to_track(page, "pkglistform:j_id_49:1:j_id_4h", part_idx=0)
-        if nav_ok:
-            starter_solved = run_challenge_part(page, bm, pm, max_challenges=35)
-            log_info(f"[TRACK 1 COMPLETE] Solved {starter_solved} challenges in Python - STARTER!")
+        easy_solved = run_track(page, bm, pm, "pkglistform:j_id_49:3:j_id_4h", "PYTHON3.x - 50 EASY CHALLENGES")
+        log_info(f"\n[TRACK COMPLETE] Solved {easy_solved} challenges in PYTHON3.x - 50 EASY CHALLENGES!\n")
 
         # =========================================================================
-        # TRACK 2: PYTHON3.x - 50 VERY-EASY CHALLENGES (50 Challenges across 5 Parts)
+        # TRACK: PYTHON3.x - 50 AVERAGE CHALLENGES (50 Challenges across 5 Parts)
         # =========================================================================
-        log_info("\n>>> STARTING TRACK 2: PYTHON3.x - 50 VERY-EASY CHALLENGES <<<")
-        total_ve_solved = 0
-        while True:
-            # Navigate to Track 2 overview
-            page.goto("https://skillrack.com/faces/candidate/codeprogramgroup.xhtml?gt=CODETUTOR")
-            page.wait_for_load_state("domcontentloaded")
-            page.wait_for_timeout(2000)
-
-            py_btn = page.locator("tr").filter(has_text="Python Programming").locator("button:has-text('Show')").first
-            if py_btn.is_visible(timeout=4000):
-                py_btn.click()
-                page.wait_for_load_state("domcontentloaded")
-                page.wait_for_timeout(2000)
-
-            track_btn = page.locator("[id='pkglistform:j_id_49:2:j_id_4h']").first
-            if not track_btn.is_visible(timeout=4000):
-                log_error("[NAVIGATE] Track button not found!")
-                break
-            track_btn.click()
-            page.wait_for_load_state("domcontentloaded")
-            page.wait_for_timeout(2500)
-
-            # Find all remaining 'View' buttons (each represents an unfinished part)
-            view_btns = page.locator("button:has-text('View'), a:has-text('View')").all()
-            if not view_btns:
-                log_info("[TRACK 2 COMPLETE] All parts completed! No 'View' buttons remain!")
-                break
-
-            log_info(f"\n--- FOUND {len(view_btns)} UNFINISHED PART(S). OPENING NEXT PART... ---")
-            view_btns[0].click()
-            page.wait_for_load_state("domcontentloaded")
-            page.wait_for_timeout(2500)
-
-            # Solve all challenges in this part
-            solved_count = run_challenge_part(page, bm, pm, max_challenges=15)
-            total_ve_solved += solved_count
-            log_info(f"--- PART FINISHED: {solved_count} solved (Total VE: {total_ve_solved}) ---")
+        avg_solved = run_track(page, bm, pm, "pkglistform:j_id_49:4:j_id_4h", "PYTHON3.x - 50 AVERAGE CHALLENGES")
+        log_info(f"\n[TRACK COMPLETE] Solved {avg_solved} challenges in PYTHON3.x - 50 AVERAGE CHALLENGES!\n")
 
         log_info(f"\n=======================================================")
-        log_info(f"[ALL TASKS COMPLETE] Finished Track 1 and Track 2!")
+        log_info(f"[ALL TASKS COMPLETE] Finished 50 Easy and 50 Average Challenges!")
         log_info(f"=======================================================")
 
     except Exception as e:

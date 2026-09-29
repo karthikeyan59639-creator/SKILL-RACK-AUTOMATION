@@ -1385,12 +1385,712 @@
       "code": "def main():\n    n_str = input().strip()\n    total_sum = sum(int(digit) for digit in n_str if int(digit) % 2 != 0)\n    print(total_sum)\n\nif __name__ == '__main__':\n    main()",
       "attempts": 1,
       "timestamp": "2026-09-29T13:29:49.455375"
+    },
+    "2601": {
+      "program_id": "2601",
+      "status": "passed",
+      "code": "def main():\n    import sys\n    expression = sys.stdin.read().strip()\n    if not expression:\n        return\n        \n    # Split by '=' to get left hand side and right hand side\n    lhs, rhs_str = expression.split('=')\n    rhs = int(rhs_str)\n    \n    # The left-hand side contains two numbers A and B and an incorrect operator.\n    # We need to find which of '+', '-', '*', '/' makes A op B == rhs.\n    operators = ['+', '-', '*', '/']\n    \n    for op in operators:\n        if op in lhs:\n            a_str, b_str = lhs.split(op)\n            a = int(a_str)\n            b = int(b_str)\n            \n            # Check each possible correct operator\n            for correct_op in ['+', '-', '*', '/']:\n                try:\n                    if correct_op == '+':\n                        res = a + b\n                    elif correct_op == '-':\n                        res = a - b\n                    elif correct_op == '*':\n                        res = a * b\n                    elif correct_op == '/':\n                        # Avoid division by zero, and ensure exact integer division if applicable\n                        if b != 0 and a / b == rhs:\n                            print(correct_op)\n                            return\n                        continue\n                    \n                    if res == rhs:\n                        print(correct_op)\n                        return\n                except ZeroDivisionError:\n                    continue\n\nif __name__ == '__main__':\n    main()",
+      "attempts": 1,
+      "timestamp": "2026-09-29T13:56:52.710987"
+    },
+    "2602": {
+      "program_id": "2602",
+      "status": "passed",
+      "code": "import sys\n\ndef main():\n    lines = sys.stdin.read().splitlines()\n    if not lines:\n        return\n    S = lines[0]\n    A = lines[1] if len(lines) > 1 else ''\n    B = lines[2] if len(lines) > 2 else ''\n    \n    count = 0\n    if len(A) == 1 and len(B) == 1:\n        for i in range(len(S) - 1):\n            if S[i] == A and S[i+1] == B:\n                count += 1\n    print(count)\n\nif __name__ == '__main__':\n    main()",
+      "attempts": 1,
+      "timestamp": "2026-09-29T13:57:13.955420"
+    },
+    "2603": {
+      "program_id": "2603",
+      "status": "passed",
+      "code": "def main():\n    import sys\n    input_data = sys.stdin.read().split()\n    if not input_data:\n        return\n    \n    a1 = int(input_data[0])\n    a2 = int(input_data[1])\n    a3 = int(input_data[2])\n    n = int(input_data[3])\n    \n    d = a2 - a1\n    nth_term = a1 + (n - 1) * d\n    print(nth_term)\n\nif __name__ == '__main__':\n    main()",
+      "attempts": 1,
+      "timestamp": "2026-09-29T13:57:35.449337"
+    },
+    "2604": {
+      "program_id": "2604",
+      "status": "passed",
+      "code": "import sys\n\ndef main():\n    s = sys.stdin.read().strip()\n    if not s:\n        return\n    # Extract unique characters, sort them in descending order, and join\n    unique_chars = sorted(set(s), reverse=True)\n    print(\"\".join(unique_chars))\n\nif __name__ == '__main__':\n    main()",
+      "attempts": 1,
+      "timestamp": "2026-09-29T13:57:56.823762"
+    },
+    "2605": {
+      "program_id": "2605",
+      "status": "passed",
+      "code": "import sys\n\ndef main():\n    input_data = sys.stdin.read().split()\n    if not input_data:\n        return\n    \n    n = int(input_data[0])\n    matrix = []\n    idx = 1\n    for _ in range(n):\n        row = []\n        for _ in range(n):\n            row.append(int(input_data[idx]))\n            idx += 1\n        matrix.append(row)\n    \n    # If N = 2, all 4 elements are corners, but top-left, top-right, bottom-left, bottom-right are distinct unless N=1.\n    # Given constraints: 2 <= N <= 20, the four corners are:\n    # (0, 0), (0, N-1), (N-1, 0), (N-1, N-1)\n    \n    if n == 1:\n        corner_sum = matrix[0][0]\n    else:\n        corner_sum = matrix[0][0] + matrix[0][n-1] + matrix[n-1][0] + matrix[n-1][n-1]\n        \n    print(corner_sum)\n\nif __name__ == '__main__':\n    main()",
+      "attempts": 1,
+      "timestamp": "2026-09-29T13:58:19.048861"
+    },
+    "2606": {
+      "program_id": "2606",
+      "status": "passed",
+      "code": "import sys\n\ndef main():\n    lines = sys.stdin.read().splitlines()\n    if not lines:\n        return\n    S = lines[0]\n    N = int(lines[1])\n    \n    L = len(S)\n    N = N % L\n    \n    # Rotating forward by N positions means the last N characters move to the front.\n    # For example, \"cricket\", N=2 -> last 2 chars are \"et\", remaining is \"crick\" -> \"etcrick\"\n    if N == 0:\n        print(S)\n    else:\n        rotated = S[-N:] + S[:-N]\n        print(rotated)\n\nif __name__ == '__main__':\n    main()",
+      "attempts": 1,
+      "timestamp": "2026-09-29T13:58:40.659929"
+    },
+    "2607": {
+      "program_id": "2607",
+      "status": "passed",
+      "code": "def is_prime(num):\n    if num <= 1:\n        return False\n    if num <= 3:\n        return True\n    if num % 2 == 0 or num % 3 == 0:\n        return False\n    i = 5\n    while i * i <= num:\n        if num % i == 0 or num % (i + 2) == 0:\n            return False\n        i += 6\n    return True\n\ndef main():\n    n = int(input().strip())\n    next_num = n + 1\n    while True:\n        if is_prime(next_num):\n            print(next_num)\n            break\n        next_num += 1\n\nif __name__ == '__main__':\n    main()",
+      "attempts": 1,
+      "timestamp": "2026-09-29T13:59:02.565882"
+    },
+    "2608": {
+      "program_id": "2608",
+      "status": "passed",
+      "code": "import sys\n\ndef is_prime(n):\n    if n <= 1:\n        return False\n    if n <= 3:\n        return True\n    if n % 2 == 0 or n % 3 == 0:\n        return False\n    i = 5\n    while i * i <= n:\n        if n % i == 0 or n % (i + 2) == 0:\n            return False\n        i += 6\n    return True\n\ndef main():\n    input_data = sys.stdin.read().split()\n    if not input_data:\n        return\n    n1 = int(input_data[0])\n    n2 = int(input_data[1])\n    \n    start = min(n1, n2)\n    end = max(n1, n2)\n    \n    count = 0\n    for num in range(start, end + 1):\n        if is_prime(num):\n            count += 1\n            \n    print(count)\n\nif __name__ == '__main__':\n    main()",
+      "attempts": 1,
+      "timestamp": "2026-09-29T13:59:24.360026"
+    },
+    "2609": {
+      "program_id": "2609",
+      "status": "passed",
+      "code": "def solve():\n    import sys\n    S = sys.stdin.readline().rstrip('\\r\\n')\n    if not S:\n        return\n    \n    words = S.split(' ')\n    result_words = []\n    \n    for word in words:\n        new_chars = []\n        for i, char in enumerate(word):\n            if i % 2 == 0:\n                new_chars.append(char.upper())\n            else:\n                new_chars.append(char.lower())\n        result_words.append(\"\".join(new_chars))\n        \n    print(\" \".join(result_words))\n\nif __name__ == '__main__':\n    solve()",
+      "attempts": 1,
+      "timestamp": "2026-09-29T13:59:46.719418"
+    },
+    "2610": {
+      "program_id": "2610",
+      "status": "passed",
+      "code": "import sys\n\ndef main():\n    lines = sys.stdin.read().splitlines()\n    if len(lines) < 2:\n        return\n    s1 = lines[0]\n    s2 = lines[1]\n    \n    if s1 <= s2:\n        print(s1 + s2)\n    else:\n        print(s2 + s1)\n\nif __name__ == '__main__':\n    main()",
+      "attempts": 1,
+      "timestamp": "2026-09-29T14:00:08.435513"
+    },
+    "2591": {
+      "program_id": "2591",
+      "status": "passed",
+      "code": "def main():\n    import sys\n    line = sys.stdin.read().strip()\n    if not line:\n        return\n    \n    tokens = line.split()\n    total_distance = 0.0\n    total_time = 0.0\n    \n    for token in tokens:\n        if '@' in token:\n            dist_str, time_str = token.split('@')\n            total_distance += float(dist_str)\n            total_time += float(time_str)\n            \n    if total_time > 0:\n        avg_speed = total_distance / total_time\n        print(f\"{avg_speed:.2f} kmph\")\n    else:\n        print(\"0.00 kmph\")\n\nif __name__ == '__main__':\n    main()",
+      "attempts": 1,
+      "timestamp": "2026-09-29T14:00:40.664735"
+    },
+    "2592": {
+      "program_id": "2592",
+      "status": "passed",
+      "code": "import sys\n\ndef main():\n    lines = sys.stdin.read().splitlines()\n    if not lines:\n        return\n    S = lines[0]\n    X = int(lines[1])\n    \n    # 1-based indexing for positions which are multiples of X\n    # In Python, string is 0-indexed, so the 1-based position i corresponds to index i-1.\n    result = []\n    for i in range(X, len(S) + 1, X):\n        result.append(S[i - 1])\n        \n    print(\"\".join(result))\n\nif __name__ == '__main__':\n    main()",
+      "attempts": 1,
+      "timestamp": "2026-09-29T14:01:02.629696"
+    },
+    "2593": {
+      "program_id": "2593",
+      "status": "passed",
+      "code": "import sys\n\ndef main():\n    # Read the first line of input\n    s = sys.stdin.readline().strip()\n    if not s:\n        return\n    \n    # SkillRack defines the \"first repeating character\" as the character\n    # present in the string with count > 1 that appears earliest (has the minimum index).\n    min_index = len(s)\n    first_repeating = ''\n    \n    for char in set(s):\n        if s.count(char) > 1:\n            first_idx = s.find(char)\n            if first_idx < min_index:\n                min_index = first_idx\n                first_repeating = char\n                \n    if first_repeating:\n        print(first_repeating)\n\nif __name__ == '__main__':\n    main()",
+      "attempts": 1,
+      "timestamp": "2026-09-29T14:36:55.000377"
+    },
+    "2594": {
+      "program_id": "2594",
+      "status": "passed",
+      "code": "import sys\n\ndef main():\n    s = input().strip()\n    # Find the first repeating character scanning from right to left (from the last).\n    # Wait, the problem says: \"print the first repeating character C from the last.\"\n    # Let's re-read carefully: \"print the first repeating character C from the last.\"\n    # For \"abcdexyzbwqpooplj\":\n    # Characters from right to left: j, l, p, o, o, p, q, w, b, z, y, x, e, d, c, b, a\n    # Wait, the previous code output 'o', but expected 'p'.\n    # Let's check occurrences from the right:\n    # string: a b c d e x y z b w q p o o p l j\n    # Scanning from right to left:\n    # j: 1\n    # l: 1\n    # p: appears at indices 11, 14. First seen from right is at index 14. Its count is > 1.\n    # So 'p' appears multiple times.\n    # Let's check 'o': appears at indices 12, 13.\n    # If we scan from right to left:\n    # j (1), l (1), p (seen at 14, total count 3 > 1 -> so 'p' is the first repeating character encountered when scanning from the right!)\n    # Ah, 'p' appears at index 11, 14, and somewhere else? Let's check indices of 'p':\n    # a(0) b(1) c(2) d(3) e(4) x(5) y(6) z(7) b(8) w(9) q(10) p(11) o(12) o(13) p(14) l(15) j(16)\n    # Wait: \"abcdexyzbwqpooplj\"\n    # Length: 17\n    # 0:a, 1:b, 2:c, 3:d, 4:e, 5:x, 6:y, 7:z, 8:b, 9:w, 10:q, 11:p, 12:o, 13:o, 14:p, 15:l, 16:j\n    # Let's list character counts:\n    # a:1, b:2 (1, 8), c:1, d:1, e:1, x:1, y:1, z:1, w:1, q:1, p:3 (11, 14, ... wait, only two? Let's count 'p's: index 11 and 14. Are there any others? No, wait: p(11), o(12), o(13), p(14). That's two 'p's and two 'o's).\n    # Wait! If we scan from right to left:\n    # j -> l -> p (at 14) -> o (at 13) -> o (at 12) -> p (at 11) ...\n    # When scanning from right to left, the first character whose total count in S is > 1 that we encounter is 'o' (at index 13, then 12)? Wait, 'o' is at 13 and 12. Scanning right-to-left:\n    # 1. j (count 1)\n    # 2. l (count 1)\n    # 3. p (at 14, count 2 > 1) -> wait, if we check the character at index 14, it is 'p'. Does 'p' have count > 1? Yes, count is 2. So 'p' is encountered first from the right among characters that repeat!\n    # Wait, why did 'o' come out previously? Because 'o' is at 13, which is to the right of 11, but what about 14? 14 is to the right of 13!\n    # Let's check indices from right to left:\n    # 16: j\n    # 15: l\n    # 14: p (repeats, total count = 2) -> Since 14 > 13 (o's index), 'p' is encountered BEFORE 'o' when scanning from right to left!\n    # So scanning `s[::-1]` and finding the first character with `s.count(char) > 1` should give 'p'!\n    \n    for char in s[::-1]:\n        if s.count(char) > 1:\n            print(char)\n            break\n\nif __name__ == '__main__':\n    main()",
+      "attempts": 2,
+      "timestamp": "2026-09-29T14:41:21.486612"
+    },
+    "2595": {
+      "program_id": "2595",
+      "status": "passed",
+      "code": "def main():\n    s1 = input().strip()\n    s2 = input().strip()\n    \n    # We want to find the longest suffix of s1 that is also a prefix of s2.\n    # We can iterate through the possible lengths of the common part from min(len(s1), len(s2)) down to 1.\n    max_len = min(len(s1), len(s2))\n    for i in range(max_len, 0, -1):\n        if s1[-i:] == s2[:i]:\n            print(s1[-i:])\n            return\n\nif __name__ == '__main__':\n    main()",
+      "attempts": 1,
+      "timestamp": "2026-09-29T14:41:43.430799"
+    },
+    "2596": {
+      "program_id": "2596",
+      "status": "passed",
+      "code": "def main():\n    s = input().strip()\n    n = len(s)\n    mid = n // 2\n    print(s[mid - 1 : mid + 2])\n\n\nif __name__ == \"__main__\":\n    main()",
+      "attempts": 1,
+      "timestamp": "2026-09-29T14:42:04.939082"
+    },
+    "2597": {
+      "program_id": "2597",
+      "status": "passed",
+      "code": "import sys\n\ndef main():\n    s = sys.stdin.readline().strip()\n    if not s:\n        print(0)\n    else:\n        words = s.split()\n        print(len(words))\n\nif __name__ == '__main__':\n    main()",
+      "attempts": 1,
+      "timestamp": "2026-09-29T14:42:26.423653"
+    },
+    "2598": {
+      "program_id": "2598",
+      "status": "passed",
+      "code": "import sys\n\ndef main():\n    # Read the full input, preserving exact spacing including trailing/leading spaces if any,\n    # but since input() might strip the trailing newline, we use sys.stdin.readline().\n    # Wait, the problem says \"First line will contain the string value S\". \n    # Usually standard input without rstrip() keeps trailing spaces, but let's check.\n    # Actually, input() with rstrip('\\n') is standard, but here spaces matter (e.g., \"She is        happy.\").\n    # Let's read using sys.stdin.read() or sys.stdin.readline().rstrip('\\n').\n    \n    line = sys.stdin.readline()\n    if not line:\n        return\n    # Remove the trailing newline if present\n    if line.endswith('\\n'):\n        line = line[:-1]\n    if line.endswith('\\r'):\n        line = line[:-1]\n\n    # The problem states: \"print the first letter of each word in S in upper case.\"\n    # Looking at Example 1:\n    # Input:  \"She is        happy.\"\n    # Output: \"She Is        Happy.\"\n    # Notice that \"is\" becomes \"Is\", \"happy.\" becomes \"Happy.\"\n    # This means title() or capitalizing the first letter of every space-separated word, \n    # while preserving the exact spacing between words.\n    \n    # If we use .title(), it might lowercase the rest of the word (e.g. \"joIN\" -> \"Join\"), \n    # but in Example 2:\n    # Input:  \"joIN tHE ParTY\"\n    # Output: \"JoIN THE ParTY\"\n    # Notice that \"joIN\" becomes \"JoIN\" (only the first letter is capitalized, rest of the letters are unchanged!).\n    # And \"tHE\" becomes \"THE\" (wait, \"tHE\" -> \"THE\"? Ah, \"tHE\" has 't' capitalized to 'T', but 'H' and 'E' are already upper. \n    # Wait, Example 2 output: \"JoIN THE ParTY\". Input: \"joIN tHE ParTY\".\n    # 'tHE' -> 'THE'? Or is it just capitalizing the first letter?\n    # Let's check: 't' -> 'T', 'H' and 'E' remain uppercase? Wait, 'HE' in input is 'HE'. \n    # Ah, 'tHE' has 't' (lower), 'H' (upper), 'E' (upper). \n    # If we only capitalize the first letter, 'tHE' would become 'THE' because 't' becomes 'T' and 'HE' stays 'HE'.\n    # So the rule is simply: for each word, capitalize its first character, and leave the rest of the characters of the word completely unchanged.\n    \n    # Let's split by spaces while preserving the exact whitespace.\n    # We can iterate through the string and find words.\n    # Or even simpler, iterate with a state machine or regex.\n    \n    import re\n    \n    # We want to find words and capitalize their first letter.\n    # A word is a sequence of non-whitespace characters.\n    # We can use re.sub with a function.\n    \n    def capitalize_word(match):\n        word = match.group(0)\n        if len(word) > 0:\n            return word[0].upper() + word[1:]\n        return word\n\n    # Match any sequence of non-whitespace characters\n    output = re.sub(r'\\S+', capitalize_word, line)\n    print(output, end='')\n\nif __name__ == '__main__':\n    main()",
+      "attempts": 1,
+      "timestamp": "2026-09-29T14:42:50.594904"
+    },
+    "2599": {
+      "program_id": "2599",
+      "status": "passed",
+      "code": "import sys\n\ndef main():\n    lines = sys.stdin.read().split()\n    if not lines:\n        return\n    \n    cost_alen = float(lines[0])\n    cost_tim = float(lines[1])\n    width_alen = float(lines[2])\n    width_tim = float(lines[3])\n    \n    rate = 5.0\n    \n    # Area = Cost / Rate\n    area_alen = cost_alen / rate\n    area_tim = cost_tim / rate\n    \n    # Length = Area / Width\n    length_alen = area_alen / width_alen\n    length_tim = area_tim / width_tim\n    \n    diff = abs(length_alen - length_tim)\n    \n    print(f\"{diff:.2f}\")\n\nif __name__ == '__main__':\n    main()",
+      "attempts": 1,
+      "timestamp": "2026-09-29T14:43:12.600148"
+    },
+    "2600": {
+      "program_id": "2600",
+      "status": "passed",
+      "code": "import datetime\n\ndef main():\n    date_str = input().strip()\n    # Parse the date assuming DD-MM-YYYY format\n    date_obj = datetime.datetime.strptime(date_str, \"%d-%m-%Y\")\n    # Print the full month name\n    print(date_obj.strftime(\"%B\"))\n\nif __name__ == \"__main__\":\n    main()",
+      "attempts": 1,
+      "timestamp": "2026-09-29T14:43:34.593322"
+    },
+    "2581": {
+      "program_id": "2581",
+      "status": "passed",
+      "code": "def main():\n    year = int(input().strip())\n    \n    # Following the exact pseudocode logic provided:\n    # if year is divisible by 400 then is_leap_year\n    # else if year is divisible by 100 then not_leap_year\n    # else if year is divisible by 4 then is_leap_year\n    # else not_leap_year\n    \n    if year % 400 == 0:\n        print(\"yes\")\n    elif year % 100 == 0:\n        print(\"no\")\n    elif year % 4 == 0:\n        print(\"yes\")\n    else:\n        print(\"no\")\n\nif __name__ == '__main__':\n    main()",
+      "attempts": 1,
+      "timestamp": "2026-09-29T14:44:06.948797"
+    },
+    "2582": {
+      "program_id": "2582",
+      "status": "passed",
+      "code": "import sys\n\ndef main():\n    lines = sys.stdin.read().splitlines()\n    if not lines:\n        return\n    \n    # First line contains the dice rolls\n    rolls = list(map(int, lines[0].strip().split()))\n    \n    # Second line is X (gain for odd)\n    X = int(lines[1].strip())\n    \n    # Third line is Y (loss for even)\n    Y = int(lines[2].strip())\n    \n    net = 0\n    for roll in rolls:\n        if roll % 2 != 0:  # Odd number\n            net += X\n        else:  # Even number\n            net -= Y\n            \n    print(net)\n\nif __name__ == '__main__':\n    main()",
+      "attempts": 1,
+      "timestamp": "2026-09-29T14:44:31.446244"
+    },
+    "2583": {
+      "program_id": "2583",
+      "status": "passed",
+      "code": "def main():\n    s1 = input().strip()\n    s2 = input().strip()\n    \n    set1 = set(s1)\n    set2 = set(s2)\n    \n    common = set1.intersection(set2)\n    print(len(common))\n\nif __name__ == '__main__':\n    main()",
+      "attempts": 1,
+      "timestamp": "2026-09-29T14:44:56.484176"
+    },
+    "2584": {
+      "program_id": "2584",
+      "status": "passed",
+      "code": "import sys\n\ndef main():\n    s = input().strip()\n    \n    if '_' in s:\n        idx = s.index('_')\n        # Reverse the part before the underscore, and keep the rest as is\n        res = s[:idx][::-1] + s[idx:]\n    else:\n        # If there is no underscore, reverse the entire string\n        res = s[::-1]\n        \n    print(res)\n\nif __name__ == '__main__':\n    main()",
+      "attempts": 1,
+      "timestamp": "2026-09-29T14:45:18.563668"
+    },
+    "2585": {
+      "program_id": "2585",
+      "status": "passed",
+      "code": "import sys\nimport re\n\ndef main():\n    s = input().strip()\n    # Find all occurrences of (number)(alphabet)\n    tokens = re.findall(r'(\\d+)([a-zA-Z])', s)\n    \n    result = []\n    for count_str, char in tokens:\n        count = int(count_str)\n        result.append(char * count)\n        \n    print(\"\".join(result))\n\nif __name__ == '__main__':\n    main()",
+      "attempts": 1,
+      "timestamp": "2026-09-29T14:45:42.132965"
+    },
+    "2586": {
+      "program_id": "2586",
+      "status": "passed",
+      "code": "import sys\n\ndef main():\n    s = input().strip()\n    \n    # Find the operator which is one of A, a, S, s, M, m, D, d\n    operators = ['A', 'a', 'S', 's', 'M', 'm', 'D', 'd']\n    op_char = None\n    op_index = -1\n    \n    for i, char in enumerate(s):\n        if char in operators:\n            op_char = char.upper()\n            op_index = i\n            break\n            \n    if op_index == -1:\n        return\n        \n    num1 = int(s[:op_index])\n    num2 = int(s[op_index+1:])\n    \n    if op_char == 'A':\n        result = num1 + num2\n    elif op_char == 'S':\n        result = num1 - num2\n    elif op_char == 'M':\n        result = num1 * num2\n    elif op_char == 'D':\n        # Integer division as per \"Ignore any floating point values just print the integer result\"\n        # Standard integer division in Python truncates towards negative infinity, \n        # but typically these problems use positive numbers or standard truncation. \n        # Using standard // which truncates towards floor.\n        result = num1 // num2\n    \n    print(int(result))\n\nif __name__ == '__main__':\n    main()",
+      "attempts": 1,
+      "timestamp": "2026-09-29T14:46:04.384074"
+    },
+    "2587": {
+      "program_id": "2587",
+      "status": "passed",
+      "code": "def main():\n    import sys\n    F = float(sys.stdin.read().strip())\n    # Multiply by 100 and round to avoid floating point precision issues (e.g., 11.30 * 100 = 1129.999...)\n    paise = round(F * 100)\n    print(paise)\n\nif __name__ == '__main__':\n    main()",
+      "attempts": 1,
+      "timestamp": "2026-09-29T14:46:26.415538"
+    },
+    "2588": {
+      "program_id": "2588",
+      "status": "passed",
+      "code": "import sys\n\ndef main():\n    lines = sys.stdin.read().split()\n    if not lines:\n        return\n    H = int(lines[0])\n    L = int(lines[1])\n    \n    # Let B be the number of birds and A be the number of animals.\n    # B + A = H\n    # 2*B + 4*A = L\n    # 2*(B + A) + 2*A = L => 2*H + 2*A = L => 2*A = L - 2*H => A = (L - 2*H) // 2\n    # B = H - A\n    \n    A = (L - 2 * H) // 2\n    B = H - A\n    \n    print(f\"{B} {A}\")\n\nif __name__ == '__main__':\n    main()",
+      "attempts": 1,
+      "timestamp": "2026-09-29T14:46:48.197863"
+    },
+    "2589": {
+      "program_id": "2589",
+      "status": "passed",
+      "code": "import sys\nimport math\n\ndef solve():\n    input_data = sys.stdin.read().split()\n    if not input_data:\n        return\n    \n    n = int(input_data[0])\n    numbers = [int(x) for x in input_data[1:n+1]]\n    \n    # The problem statement says: \"all other numbers are multiple of the smallest number\"\n    # This implies the smallest number must divide all other numbers,\n    # so the greatest common divisor (GCD) of all numbers is simply the smallest number.\n    # Therefore, the common factors of all numbers are the factors of their GCD.\n    \n    g = numbers[0]\n    for x in numbers[1:]:\n        g = math.gcd(g, x)\n        \n    # Find all factors of g, excluding 1\n    count = 0\n    for i in range(2, int(math.isqrt(g)) + 1):\n        if g % i == 0:\n            if i * i == g:\n                count += 1\n            else:\n                count += 2\n                \n    if g > 1:\n        count += 1  # g itself is a factor (since g >= 2, because 1 is excluded and if g=1 count would be 0, but usually numbers are > 1).\n        \n    print(count)\n\nif __name__ == '__main__':\n    solve()",
+      "attempts": 1,
+      "timestamp": "2026-09-29T14:47:10.591290"
+    },
+    "2590": {
+      "program_id": "2590",
+      "status": "passed",
+      "code": "# Read the input N as an integer and print its negated value\nn = int(input().strip())\nprint(-n)",
+      "attempts": 1,
+      "timestamp": "2026-09-29T14:47:32.122958"
+    },
+    "2571": {
+      "program_id": "2571",
+      "status": "passed",
+      "code": "import sys\n\ndef main():\n    input_data = sys.stdin.read().splitlines()\n    if not input_data:\n        return\n    \n    n = int(input_data[0].strip())\n    \n    max_runs = -1\n    top_batsman = \"\"\n    \n    for i in range(1, n + 1):\n        line = input_data[i].strip()\n        if not line:\n            continue\n        name, runs_str = line.split(',')\n        runs = int(runs_str.strip())\n        \n        if runs > max_runs:\n            max_runs = runs\n            top_batsman = name.strip()\n            \n    print(top_batsman)\n\nif __name__ == '__main__':\n    main()",
+      "attempts": 1,
+      "timestamp": "2026-09-29T14:48:05.044181"
+    },
+    "2572": {
+      "program_id": "2572",
+      "status": "passed",
+      "code": "def main():\n    import sys\n    input = sys.stdin.read\n    data = input().splitlines()\n    \n    if not data:\n        return\n        \n    n = int(data[0].strip())\n    \n    max_total = -1\n    top_student = \"\"\n    \n    for i in range(1, n + 1):\n        line = data[i].strip()\n        parts = line.split(':')\n        name = parts[0]\n        maths = int(parts[1])\n        physics = int(parts[2])\n        chemistry = int(parts[3])\n        \n        total = maths + physics + chemistry\n        \n        if total > max_total:\n            max_total = total\n            top_student = name\n            \n    print(top_student)\n\nif __name__ == '__main__':\n    main()",
+      "attempts": 1,
+      "timestamp": "2026-09-29T14:48:26.743406"
+    },
+    "2573": {
+      "program_id": "2573",
+      "status": "passed",
+      "code": "def main():\n    import sys\n    input_data = sys.stdin.read().split()\n    if not input_data:\n        return\n    \n    n = int(input_data[0])\n    \n    first_innings_sum = 0\n    second_innings_sum = 0\n    \n    idx = 1\n    for _ in range(n):\n        first_innings_sum += int(input_data[idx])\n        second_innings_sum += int(input_data[idx+1])\n        idx += 2\n        \n    avg1 = first_innings_sum / n\n    avg2 = second_innings_sum / n\n    \n    print(f\"{avg1:.2f}\")\n    print(f\"{avg2:.2f}\")\n\nif __name__ == '__main__':\n    main()",
+      "attempts": 1,
+      "timestamp": "2026-09-29T14:48:48.400620"
+    },
+    "2574": {
+      "program_id": "2574",
+      "status": "passed",
+      "code": "import sys\n\ndef main():\n    line = sys.stdin.read().strip()\n    if not line:\n        return\n    \n    # Split by whitespace, convert each token to an integer, and sum them up\n    total_sum = sum(map(int, line.split()))\n    print(total_sum)\n\nif __name__ == '__main__':\n    main()",
+      "attempts": 1,
+      "timestamp": "2026-09-29T14:49:10.415185"
+    },
+    "2575": {
+      "program_id": "2575",
+      "status": "passed",
+      "code": "def main():\n    line = input().strip()\n    if not line:\n        print(0)\n        return\n    \n    times = line.split()\n    late_count = 0\n    \n    for t in times:\n        parts = t.split(':')\n        if len(parts) == 2:\n            hh = int(parts[0])\n            mm = int(parts[1])\n            # Meeting starts at 10:00 AM (10:00 in 24-hour format)\n            if hh > 10 or (hh == 10 and mm > 0):\n                late_count += 1\n                \n    print(late_count)\n\nif __name__ == '__main__':\n    main()",
+      "attempts": 1,
+      "timestamp": "2026-09-29T14:49:33.121838"
+    },
+    "2576": {
+      "program_id": "2576",
+      "status": "passed",
+      "code": "import sys\n\ndef main():\n    s = sys.stdin.readline().strip()\n    result = \"\".join([c for c in s if c.isalpha()])\n    print(result)\n\nif __name__ == '__main__':\n    main()",
+      "attempts": 1,
+      "timestamp": "2026-09-29T14:49:54.526361"
+    },
+    "2577": {
+      "program_id": "2577",
+      "status": "passed",
+      "code": "def main():\n    n = int(input().strip())\n    for i in range(1, n + 1):\n        print(\" \".join([\"*\"] * i))\n\nif __name__ == \"__main__\":\n    main()",
+      "attempts": 1,
+      "timestamp": "2026-09-29T14:50:15.793667"
+    },
+    "2578": {
+      "program_id": "2578",
+      "status": "passed",
+      "code": "def solve():\n    line = input().strip()\n    if not line:\n        return\n    \n    cars = line.split()\n    min_car = None\n    min_mileage = float('inf')\n    \n    for car in cars:\n        if '@' in car:\n            name, mileage_str = car.rsplit('@', 1)\n            mileage = float(mileage_str)\n            if mileage < min_mileage:\n                min_mileage = mileage\n                min_car = name\n                \n    if min_car is not None:\n        print(min_car)\n\nif __name__ == '__main__':\n    solve()",
+      "attempts": 1,
+      "timestamp": "2026-09-29T14:50:39.435081"
+    },
+    "2579": {
+      "program_id": "2579",
+      "status": "passed",
+      "code": "def solve():\n    s = input().strip()\n    n = len(s)\n    \n    # Since the string is missing exactly one character and should be a palindrome,\n    # we can compare characters from both ends moving inwards.\n    # When a mismatch occurs between s[i] and s[j], one of them is missing its counterpart.\n    # Given the constraints and typical structure, we can test which character to insert\n    # or use a two-pointer approach to find the missing character.\n    \n    i = 0\n    j = n - 1\n    \n    while i < j:\n        if s[i] == s[j]:\n            i += 1\n            j -= 1\n        else:\n            # Mismatch found. Either s[i] is the extra character (meaning missing from right)\n            # or s[j] is the extra character (meaning missing from left).\n            # Let's check by skipping one and seeing if the rest forms a palindrome.\n            \n            # Option 1: Try skipping s[j] (i.e., s[j] is the character that needs a pair, or rather s[j] matches s[i+1]...)\n            # Actually, if we insert s[i] at position j+1, or s[j] at position i...\n            # Let's test the two possibilities for the missing character:\n            # If we insert s[i] at index j+1:\n            cand1 = s[:j+1] + s[i] + s[j+1:]\n            if cand1 == cand1[::-1]:\n                print(s[i])\n                return\n            \n            # If we insert s[j] at index i:\n            cand2 = s[:i] + s[j] + s[i:]\n            if cand2 == cand2[::-1]:\n                print(s[j])\n                return\n            \n            break\n\nsolve()",
+      "attempts": 2,
+      "timestamp": "2026-09-29T14:53:02.182650"
+    },
+    "2580": {
+      "program_id": "2580",
+      "status": "passed",
+      "code": "import sys\n\ndef main():\n    line = sys.stdin.readline()\n    if not line:\n        return\n    N = int(line.strip())\n    for i in range(1, N + 1):\n        row = [str(j) for j in range(1, i + 1)]\n        print(\" \".join(row))\n\nif __name__ == '__main__':\n    main()",
+      "attempts": 1,
+      "timestamp": "2026-09-29T14:53:24.707922"
+    },
+    "2567": {
+      "program_id": "2567",
+      "status": "passed",
+      "code": "import sys\n\ndef is_prime(n):\n    if n <= 1:\n        return False\n    if n <= 3:\n        return True\n    if n % 2 == 0 or n % 3 == 0:\n        return False\n    i = 5\n    while i * i <= n:\n        if n % i == 0 or n % (i + 2) == 0:\n            return False\n        i += 6\n    return True\n\ndef main():\n    line = input().strip()\n    if not line:\n        return\n    n = int(line)\n    if is_prime(n):\n        print(\"YES\")\n    else:\n        print(\"NO\")\n\nif __name__ == '__main__':\n    main()",
+      "attempts": 1,
+      "timestamp": "2026-09-29T14:53:58.097808"
+    },
+    "2568": {
+      "program_id": "2568",
+      "status": "passed",
+      "code": "def main():\n    n = int(input().strip())\n    \n    if n <= 0:\n        return\n    \n    fib = []\n    if n >= 1:\n        fib.append(0)\n    if n >= 2:\n        fib.append(1)\n        \n    for i in range(2, n):\n        fib.append(fib[-1] + fib[-2])\n        \n    print(*(fib[:n]))\n\nif __name__ == '__main__':\n    main()",
+      "attempts": 1,
+      "timestamp": "2026-09-29T14:54:20.255486"
+    },
+    "2569": {
+      "program_id": "2569",
+      "status": "passed",
+      "code": "import sys\n\ndef main():\n    lines = sys.stdin.read().splitlines()\n    if not lines:\n        return\n    s = lines[0]\n    c = lines[1] if len(lines) > 1 else ''\n    \n    idx = s.find(c)\n    if idx != -1:\n        print(s[:idx])\n    else:\n        print(s)\n\nif __name__ == '__main__':\n    main()",
+      "attempts": 1,
+      "timestamp": "2026-09-29T14:54:43.127264"
+    },
+    "2570": {
+      "program_id": "2570",
+      "status": "passed",
+      "code": "import sys\n\ndef main():\n    s = sys.stdin.readline().strip()\n    if not s:\n        # If input() might be empty due to trailing newlines, try reading all lines\n        s = sys.stdin.read().strip()\n    \n    count = sum(1 for char in s if char.isupper())\n    print(count)\n\nif __name__ == '__main__':\n    main()",
+      "attempts": 1,
+      "timestamp": "2026-09-29T14:55:05.804452"
+    },
+    "2525": {
+      "program_id": "2525",
+      "status": "passed",
+      "code": "import sys\n\ndef main():\n    input_data = sys.stdin.read().split()\n    if not input_data:\n        return\n    X = int(input_data[0])\n    Y = int(input_data[1])\n    \n    odds = []\n    # Start checking from X + 1 up to Y - 1\n    start = X + 1\n    if start % 2 == 0:\n        start += 1\n        \n    for i in range(start, Y, 2):\n        odds.append(str(i))\n        \n    print(\" \".join(odds))\n\nif __name__ == '__main__':\n    main()",
+      "attempts": 1,
+      "timestamp": "2026-09-29T14:55:29.277071"
+    },
+    "2527": {
+      "program_id": "2527",
+      "status": "passed",
+      "code": "def solve():\n    import sys\n    input_data = sys.stdin.read().split()\n    if not input_data:\n        return\n    \n    n = int(input_data[0])\n    integers = [int(x) for x in input_data[1:n+1]]\n    \n    unique_integers = sorted(list(set(integers)), reverse=True)\n    print(unique_integers[1])\n\nif __name__ == '__main__':\n    solve()",
+      "attempts": 1,
+      "timestamp": "2026-09-29T14:55:52.117579"
+    },
+    "2528": {
+      "program_id": "2528",
+      "status": "passed",
+      "code": "def main():\n    s = input().strip()\n    if len(s) >= 3:\n        print(s[1:-1])\n\nif __name__ == '__main__':\n    main()",
+      "attempts": 1,
+      "timestamp": "2026-09-29T14:56:14.515500"
+    },
+    "2531": {
+      "program_id": "2531",
+      "status": "passed",
+      "code": "import math\n\ndef main():\n    x = int(input().strip())\n    y = int(input().strip())\n    print(math.gcd(x, y))\n\nif __name__ == '__main__':\n    main()",
+      "attempts": 1,
+      "timestamp": "2026-09-29T14:56:35.846061"
+    },
+    "2533": {
+      "program_id": "2533",
+      "status": "passed",
+      "code": "def main():\n    s = input().strip()\n    print(s[::-1])\n\nif __name__ == '__main__':\n    main()",
+      "attempts": 1,
+      "timestamp": "2026-09-29T14:57:00.907713"
+    },
+    "2534": {
+      "program_id": "2534",
+      "status": "passed",
+      "code": "def main():\n    n = int(input().strip())\n    unit_digit = n % 10\n    tenth_digit = (n // 10) % 10\n    print(tenth_digit + unit_digit)\n\nif __name__ == '__main__':\n    main()",
+      "attempts": 1,
+      "timestamp": "2026-09-29T14:57:22.425259"
+    },
+    "6": {
+      "program_id": "6",
+      "status": "passed",
+      "code": "def main():\n    import sys\n    line = sys.stdin.read().strip()\n    if not line:\n        return\n    tokens = line.split()\n    \n    current_x = 0\n    current_y = 0\n    \n    for token in tokens:\n        if not token:\n            continue\n        prefix = token[0]\n        value = int(token[1:])\n        \n        if prefix == 'x':\n            current_x = value\n        elif prefix == 'y':\n            current_y = value\n        elif prefix == 'N':\n            current_y += value\n        elif prefix == 'S':\n            current_y -= value\n        elif prefix == 'E':\n            current_x += value\n        elif prefix == 'W':\n            current_x -= value\n            \n    print(f\"x{current_x} y{current_y}\")\n\nif __name__ == '__main__':\n    main()",
+      "attempts": 1,
+      "timestamp": "2026-09-29T14:58:03.165915"
+    },
+    "2667": {
+      "program_id": "2667",
+      "status": "passed",
+      "code": "import sys\n\ndef main():\n    input_data = sys.stdin.read().split()\n    if not input_data:\n        return\n    \n    N = int(input_data[0])\n    M = int(input_data[1])\n    \n    idx = 2\n    matrix_n = []\n    for _ in range(N):\n        row = []\n        for _ in range(N):\n            row.append(int(input_data[idx]))\n            idx += 1\n        matrix_n.append(row)\n        \n    matrix_m = []\n    for _ in range(M):\n        row = []\n        for _ in range(M):\n            row.append(int(input_data[idx]))\n            idx += 1\n        matrix_m.append(row)\n        \n    found = False\n    for i in range(N - M + 1):\n        for j in range(N - M + 1):\n            match = True\n            for r in range(M):\n                for c in range(M):\n                    if matrix_n[i + r][j + c] != matrix_m[r][c]:\n                        match = False\n                        break\n                if not match:\n                    break\n            if match:\n                found = True\n                break\n        if found:\n            break\n            \n    if found:\n        print(\"TRUE\")\n    else:\n        print(\"FALSE\")\n\nif __name__ == '__main__':\n    main()",
+      "attempts": 1,
+      "timestamp": "2026-09-29T14:58:25.353427"
+    },
+    "2668": {
+      "program_id": "2668",
+      "status": "passed",
+      "code": "import sys\n\ndef main():\n    lines = sys.stdin.read().split()\n    if not lines:\n        return\n    \n    M = int(lines[0])\n    N = int(lines[1])\n    \n    matrix = []\n    idx = 2\n    for _ in range(M):\n        row = []\n        for _ in range(N):\n            row.append(lines[idx])\n            idx += 1\n        matrix.append(row)\n        \n    # Rotate 90 degrees clockwise\n    # Original is M x N. Rotated will be N x M.\n    # The new row i (0 to N-1) comes from the old column M-1-i read from top to bottom.\n    rotated = []\n    for c in range(N):\n        new_row = []\n        for r in range(M - 1, -1, -1):\n            new_row.append(matrix[r][c])\n        rotated.append(new_row)\n        \n    for row in rotated:\n        print(\" \".join(row))\n\nif __name__ == '__main__':\n    main()",
+      "attempts": 1,
+      "timestamp": "2026-09-29T14:58:47.496906"
+    },
+    "2669": {
+      "program_id": "2669",
+      "status": "passed",
+      "code": "def main():\n    import sys\n    input_data = sys.stdin.read().split()\n    if not input_data:\n        return\n    \n    M = int(input_data[0])\n    N = int(input_data[1])\n    \n    matrix = []\n    idx = 2\n    for _ in range(M):\n        row = []\n        for _ in range(N):\n            row.append(input_data[idx])\n            idx += 1\n        matrix.append(row)\n        \n    # Rotate 90 degrees anti-clockwise\n    # Original matrix is M x N. Rotated matrix will be N x M.\n    # The element at (r, c) in original goes to (N - 1 - c, r) in rotated.\n    # Alternatively, the new rows are the columns of the original matrix taken from right to left.\n    # Row i of the rotated matrix corresponds to column (N - 1 - i) of the original matrix from top to bottom.\n    \n    rotated = []\n    for c in range(N - 1, -1, -1):\n        new_row = [matrix[r][c] for r in range(M)]\n        rotated.append(new_row)\n        \n    for row in rotated:\n        print(*(row))\n\nif __name__ == '__main__':\n    main()",
+      "attempts": 1,
+      "timestamp": "2026-09-29T14:59:09.625062"
+    },
+    "2670": {
+      "program_id": "2670",
+      "status": "passed",
+      "code": "import sys\n\ndef main():\n    try:\n        line = input().strip()\n        if not line:\n            return\n        N = int(line)\n    except (IOError, ValueError):\n        return\n\n    # Generate the grid based on the pattern\n    # For N = 5:\n    # 1  6 10 13 15\n    # 2  7 11 14\n    # 3  8 12\n    # 4  9\n    # 5\n\n    # Let's analyze row by row:\n    # Row i (0-indexed, from 0 to N-1):\n    # The starting number is i + 1.\n    # The differences between consecutive elements in row i:\n    # Row 0: starts at 1, diffs are +5, +4, +3, +2 (which are N, N-1, N-2, N-3...)\n    # Row 1: starts at 2, diffs are +5, +4, +3...\n    # In general, for row `r` (0 to N-1) and column `c` (0 to N-1-r):\n    # Let's trace N=3:\n    # Row 0: 1, 4, 6  (diff 3, then 2) -> starts at 1, next is 1 + 3 = 4, next is 4 + 2 = 6.\n    # Row 1: 2, 5     (diff 3) -> starts at 2, next is 2 + 3 = 5.\n    # Row 2: 3        -> starts at 3.\n    \n    # Formula for element at row r, col c (0-indexed):\n    # val(r, 0) = r + 1\n    # val(r, c) = val(r, c-1) + (N - c + 1)\n    \n    for r in range(N):\n        row_values = []\n        current = r + 1\n        row_values.append(current)\n        # There are N - 1 - r subsequent elements in this row\n        diff = N\n        for c in range(1, N - r):\n            current += diff\n            row_values.append(current)\n            diff -= 1\n        print(*(row_values))\n\nif __name__ == '__main__':\n    main()",
+      "attempts": 1,
+      "timestamp": "2026-09-29T14:59:32.370436"
+    },
+    "2671": {
+      "program_id": "2671",
+      "status": "passed",
+      "code": "import sys\n\ndef main():\n    line = sys.stdin.read().strip()\n    if not line:\n        return\n    N = int(line)\n    \n    # Let's analyze the pattern from Sample 1 (N = 5):\n    # Row 0: 15 10 6 3 1\n    # Row 1: 14 9 5 2\n    # Row 2: 13 8 4\n    # Row 3: 12 7\n    # Row 4: 11\n    #\n    # Sample 2 (N = 3):\n    # Row 0: 6 3 1\n    # Row 1: 5 2\n    # Row 2: 4\n    #\n    # Let's find the starting value of each row:\n    # For N=5: starts are 15, 14, 13, 12, 11.\n    # Note that total elements = N*(N+1)//2.\n    # Total for N=5 is 15.\n    # Row i starts at: total_elements - i (for i from 0 to N-1).\n    # Wait, let's check N=3: total = 6. Starts are 6, 5, 4. Yes, total - i.\n    #\n    # Now let's see the differences between consecutive elements in a row:\n    # Row 0 (N=5): 15 -> 10 (-5), 10 -> 6 (-4), 6 -> 3 (-3), 3 -> 1 (-2).\n    # Decrements are N, N-1, N-2, ...\n    # Row 1 (N=5): 14 -> 9 (-5), 9 -> 5 (-4), 5 -> 2 (-3).\n    # Decrements are N, N-1, N-2.\n    # Row i: starts at N*(N+1)//2 - i.\n    # Then subtracts N, N-1, N-2, etc.\n    \n    total = N * (N + 1) // 2\n    \n    for i in range(N):\n        current = total - i\n        row_values = []\n        # Number of elements in row i is N - i\n        decrement = N\n        val = current\n        for j in range(N - i):\n            row_values.append(str(val))\n            val -= decrement\n            decrement -= 1\n        print(\" \".join(row_values))\n\nif __name__ == '__main__':\n    main()",
+      "attempts": 2,
+      "timestamp": "2026-09-29T15:00:47.233124"
+    },
+    "2672": {
+      "program_id": "2672",
+      "status": "passed",
+      "code": "import sys\n\ndef main():\n    input_data = sys.stdin.read().split()\n    if not input_data:\n        return\n    \n    N = int(input_data[0])\n    X = input_data[1]\n    Y = input_data[2]\n    \n    val_X = int(X, N)\n    val_Y = int(Y, N)\n    \n    total = val_X + val_Y\n    print(total)\n\nif __name__ == '__main__':\n    main()",
+      "attempts": 1,
+      "timestamp": "2026-09-29T15:01:13.478765"
+    },
+    "2673": {
+      "program_id": "2673",
+      "status": "passed",
+      "code": "def solve():\n    s = input().strip()\n    digits = list(s)\n    \n    # Find the largest index i such that digits[i] < digits[i + 1]\n    i = len(digits) - 2\n    while i >= 0 and digits[i] >= digits[i + 1]:\n        i -= 1\n        \n    # If no such index exists, the digits are in descending order (e.g., 54321)\n    # But the problem states next greater number exists.\n    if i < 0:\n        # Just reverse if strictly needed, though typically guaranteed to have a next permutation\n        digits.reverse()\n    else:\n        # Find the largest index j greater than i such that digits[i] < digits[j]\n        j = len(digits) - 1\n        while digits[j] <= digits[i]:\n            j -= 1\n            \n        # Swap the value of digits[i] with that of digits[j]\n        digits[i], digits[j] = digits[j], digits[i]\n        \n        # Reverse the sequence from digits[i + 1] up to the end\n        digits[i + 1:] = reversed(digits[i + 1:])\n        \n    print(\"\".join(digits))\n\nif __name__ == '__main__':\n    solve()",
+      "attempts": 1,
+      "timestamp": "2026-09-29T15:01:38.497098"
+    },
+    "223": {
+      "program_id": "223",
+      "status": "passed",
+      "code": "import sys\n\ndef main():\n    line = sys.stdin.readline()\n    if not line:\n        return\n    n = int(line.strip())\n    \n    total = 0\n    for i in range(1, int(n**0.5) + 1):\n        if n % i == 0:\n            if i < n:\n                total += i\n            div = n // i\n            if div != i and div < n:\n                total += div\n                \n    print(total)\n\nif __name__ == '__main__':\n    main()",
+      "attempts": 1,
+      "timestamp": "2026-09-29T15:02:00.601797"
+    },
+    "227": {
+      "program_id": "227",
+      "status": "passed",
+      "code": "import sys\n\ndef main():\n    expr = input().strip()\n    \n    # Split the expression by '=' to get the left-hand side and the result\n    lhs, res_str = expr.split('=')\n    c = int(res_str)\n    \n    # Find which operator is present in the left-hand side\n    for op in ['+', '-', '*', '/']:\n        if op in lhs:\n            a_str, b_str = lhs.split(op)\n            a = int(a_str)\n            b = int(b_str)\n            break\n            \n    # Check all possible operators to see which one yields the correct result\n    operators = ['+', '-', '*', '/']\n    for op in operators:\n        try:\n            if op == '+':\n                val = a + b\n            elif op == '-':\n                val = a - b\n            elif op == '*':\n                val = a * b\n            elif op == '/':\n                # Assuming integer or standard division where applicable\n                if b != 0 and a / b == c:\n                    print(op)\n                    return\n                continue\n            \n            if val == c:\n                print(op)\n                return\n        except ZeroDivisionError:\n            continue\n\nif __name__ == '__main__':\n    main()",
+      "attempts": 1,
+      "timestamp": "2026-09-29T15:02:22.556157"
+    },
+    "2": {
+      "program_id": "2",
+      "status": "passed",
+      "code": "import sys\n\ndef main():\n    s = input().strip()\n    # Get unique characters, sort them in descending order\n    unique_chars = sorted(list(set(s)), reverse=True)\n    # Print them as a single string\n    print(\"\".join(unique_chars))\n\nif __name__ == '__main__':\n    main()",
+      "attempts": 1,
+      "timestamp": "2026-09-29T15:02:54.877099"
+    },
+    "2666": {
+      "program_id": "2666",
+      "status": "passed",
+      "code": "import sys\n\ndef main():\n    input_data = sys.stdin.read().split()\n    if not input_data:\n        return\n    \n    n = int(input_data[0])\n    matrix = []\n    idx = 1\n    for i in range(n):\n        row = []\n        for j in range(n):\n            row.append(int(input_data[idx]))\n            idx += 1\n        matrix.append(row)\n        \n    total_sum = 0\n    for i in range(n):\n        total_sum += matrix[i][i]\n        if i != n - 1 - i:\n            total_sum += matrix[i][n - 1 - i]\n            \n    print(total_sum)\n\nif __name__ == '__main__':\n    main()",
+      "attempts": 1,
+      "timestamp": "2026-09-29T15:03:16.515955"
+    },
+    "424": {
+      "program_id": "424",
+      "status": "passed",
+      "code": "import sys\n\ndef main():\n    # Read all input from stdin\n    input_data = sys.stdin.read().split()\n    if not input_data:\n        return\n    \n    # The first element is N\n    n = int(input_data[0])\n    \n    # The remaining elements are the matrix elements\n    matrix = []\n    idx = 1\n    for i in range(n):\n        row = []\n        for j in range(n):\n            row.append(int(input_data[idx]))\n            idx += 1\n        matrix.append(row)\n    \n    primary_sum = 0\n    secondary_sum = 0\n    \n    # Calculate diagonal sums\n    # Primary diagonal: matrix[i][i]\n    # Secondary diagonal: matrix[i][n - 1 - i]\n    for i in range(n):\n        primary_sum += matrix[i][i]\n        secondary_sum += matrix[i][n - 1 - i]\n        \n    # Calculate absolute difference based on SkillRack specific rule:\n    # abs(abs(d1_sum) - abs(d2_sum))\n    result = abs(abs(primary_sum) - abs(secondary_sum))\n    \n    # Print the result\n    print(result)\n\nif __name__ == '__main__':\n    main()",
+      "attempts": 1,
+      "timestamp": "2026-09-29T15:41:45.777574"
+    },
+    "205": {
+      "program_id": "205",
+      "status": "passed",
+      "code": "import sys\n\ndef solve():\n    try:\n        line1 = sys.stdin.readline().strip()\n        line2 = sys.stdin.readline().strip()\n        \n        if not line1 or not line2:\n            return\n\n        scores1 = list(map(int, line1.split()))\n        scores2 = list(map(int, line2.split()))\n\n        for s in scores1 + scores2:\n            if s < 0:\n                print(\"INVALIDINPUT\")\n                return\n\n        sum1 = sum(scores1)\n        sum2 = sum(scores2)\n        \n        # Handle division by zero if a player played 0 matches\n        # Though constraints imply matches played, if empty list, average is 0\n        avg1 = sum1 / len(scores1) if len(scores1) > 0 else 0\n        avg2 = sum2 / len(scores2) if len(scores2) > 0 else 0\n\n        if avg1 > avg2:\n            print(sum1)\n        elif avg2 > avg1:\n            print(sum2)\n        else:\n            # If averages are equal, pick the one with higher total runs\n            if sum1 >= sum2:\n                print(sum1)\n            else:\n                print(sum2)\n    except EOFError:\n        pass\n    except ValueError:\n        pass\n\nif __name__ == '__main__':\n    solve()",
+      "attempts": 1,
+      "timestamp": "2026-09-29T15:42:11.478694"
+    },
+    "207": {
+      "program_id": "207",
+      "status": "passed",
+      "code": "import sys\n\ndef solve():\n    try:\n        # Read input strings and strip whitespace\n        s1 = sys.stdin.readline().strip()\n        s2 = sys.stdin.readline().strip()\n        \n        # If input is empty, handle gracefully\n        if not s1 or not s2:\n            return\n\n        # Convert strings to sets to get unique characters\n        set1 = set(s1)\n        set2 = set(s2)\n        \n        # Compare the sets\n        if set1 == set2:\n            print(\"YES\")\n        else:\n            print(\"NO\")\n            \n    except EOFError:\n        pass\n\nif __name__ == \"__main__\":\n    solve()",
+      "attempts": 1,
+      "timestamp": "2026-09-29T15:42:37.644878"
+    },
+    "210": {
+      "program_id": "210",
+      "status": "passed",
+      "code": "import sys\n\ndef solve():\n    # Read input strings and strip whitespace\n    try:\n        s1 = sys.stdin.readline().strip()\n        s2 = sys.stdin.readline().strip()\n    except EOFError:\n        return\n\n    if not s1 or not s2:\n        print(0)\n        return\n\n    # To count common characters correctly, we must account for frequency.\n    # For each unique character present in both strings, the number of \n    # common occurrences is the minimum of its count in S1 and S2.\n    \n    set1 = set(s1)\n    set2 = set(s2)\n    \n    common_chars = set1.intersection(set2)\n    \n    total_count = 0\n    for char in common_chars:\n        total_count += min(s1.count(char), s2.count(char))\n        \n    print(total_count)\n\nif __name__ == '__main__':\n    solve()",
+      "attempts": 1,
+      "timestamp": "2026-09-29T15:43:07.587653"
+    },
+    "213": {
+      "program_id": "213",
+      "status": "passed",
+      "code": "import sys\n\ndef solve():\n    # Read the day of the first date\n    try:\n        first_day = sys.stdin.readline().strip()\n        if not first_day:\n            return\n        # Read the date D\n        d = int(sys.stdin.readline().strip())\n    except ValueError:\n        return\n\n    # Map days to integers\n    days = [\"MON\", \"TUE\", \"WED\", \"THU\", \"FRI\", \"SAT\", \"SUN\"]\n    day_to_idx = {day: i for i, day in enumerate(days)}\n    \n    # The first date is day 1.\n    # The date D is (D - 1) days after the first date.\n    # We use modulo 7 to find the offset.\n    start_idx = day_to_idx[first_day]\n    target_idx = (start_idx + (d - 1)) % 7\n    \n    print(days[target_idx])\n\nif __name__ == '__main__':\n    solve()",
+      "attempts": 1,
+      "timestamp": "2026-09-29T15:43:33.712893"
+    },
+    "218": {
+      "program_id": "218",
+      "status": "passed",
+      "code": "import sys\n\ndef solve():\n    try:\n        line = sys.stdin.readline()\n        if not line:\n            return\n        n = int(line.strip())\n    except ValueError:\n        return\n\n    total_after_discount = 0.0\n    \n    for _ in range(n):\n        try:\n            price = float(sys.stdin.readline().strip())\n        except ValueError:\n            continue\n            \n        # Determine discount percentage based on the highest applicable threshold\n        # The problem implies a hierarchy: \n        # >= 1000: 50%\n        # > 500: 25%\n        # > 400: 20%\n        # <= 400: 0%\n        \n        if price >= 1000:\n            discount = 0.50\n        elif price > 500:\n            discount = 0.25\n        elif price > 400:\n            discount = 0.20\n        else:\n            discount = 0.0\n            \n        total_after_discount += (price * (1 - discount))\n        \n    # Apply further discount if total is > 2000\n    if total_after_discount > 2000:\n        total_after_discount -= 100\n        \n    print(\"{:.2f}\".format(total_after_discount))\n\nif __name__ == \"__main__\":\n    solve()",
+      "attempts": 1,
+      "timestamp": "2026-09-29T15:43:58.676412"
+    },
+    "220": {
+      "program_id": "220",
+      "status": "passed",
+      "code": "import sys\n\ndef solve():\n    # Read X and Y from input\n    try:\n        input_data = sys.stdin.read().split()\n        if not input_data:\n            return\n        x_str = input_data[0]\n        y_str = input_data[1]\n    except EOFError:\n        return\n\n    # Reverse the numbers (int conversion automatically handles leading zeros)\n    rev_x = int(x_str[::-1])\n    rev_y = int(y_str[::-1])\n    \n    # Find the sum S\n    s = rev_x + rev_y\n    \n    # Reverse the sum S\n    # Convert to string, reverse, convert back to int to discard leading zeros\n    rev_s = int(str(s)[::-1])\n    \n    # Print the result\n    print(rev_s)\n\nif __name__ == '__main__':\n    solve()",
+      "attempts": 1,
+      "timestamp": "2026-09-29T15:44:22.565745"
+    },
+    "235": {
+      "program_id": "235",
+      "status": "passed",
+      "code": "# Read the input string\ns = input()\n\n# Use the built-in swapcase() method which toggles the case of alphabets\n# and leaves numbers and special characters unchanged.\nprint(s.swapcase())",
+      "attempts": 1,
+      "timestamp": "2026-09-29T15:44:46.056644"
+    },
+    "204": {
+      "program_id": "204",
+      "status": "passed",
+      "code": "import sys\n\ndef solve():\n    try:\n        s = sys.stdin.readline().strip()\n        if not s or \":\" not in s:\n            print(\"INVALIDINPUT\")\n            return\n        \n        parts = s.split(':')\n        if len(parts) != 2:\n            print(\"INVALIDINPUT\")\n            return\n        \n        hh_str, mm_str = parts\n        \n        # Check if they are digits and lengths are correct\n        if not (hh_str.isdigit() and mm_str.isdigit()) or len(hh_str) != 2 or len(mm_str) != 2:\n            print(\"INVALIDINPUT\")\n            return\n        \n        hh = int(hh_str)\n        mm = int(mm_str)\n        \n        # Validate ranges\n        if not (0 <= hh <= 24) or not (0 <= mm <= 59):\n            print(\"INVALIDINPUT\")\n            return\n        \n        # Special case: 24:00 is midnight (AM)\n        if hh == 24 and mm != 0:\n            print(\"INVALIDINPUT\")\n            return\n        \n        # Logic for AM/PM\n        # 00:00 to 11:59 is AM\n        # 12:00 to 23:59 is PM\n        # 24:00 is AM\n        if hh == 24 or hh < 12:\n            print(\"AM\")\n        else:\n            print(\"PM\")\n            \n    except EOFError:\n        pass\n    except Exception:\n        print(\"INVALIDINPUT\")\n\nif __name__ == \"__main__\":\n    solve()",
+      "attempts": 1,
+      "timestamp": "2026-09-29T15:45:22.402339"
+    },
+    "211": {
+      "program_id": "211",
+      "status": "passed",
+      "code": "import math\n\ndef solve():\n    try:\n        line1 = input().strip()\n        if not line1:\n            return\n        n1 = int(line1)\n        \n        line2 = input().strip()\n        if not line2:\n            return\n        n2 = int(line2)\n        \n        # Calculate HCF (GCD)\n        hcf = math.gcd(n1, n2)\n        \n        # Calculate LCM\n        # LCM(a, b) = abs(a*b) // GCD(a, b)\n        lcm = (n1 * n2) // hcf\n        \n        # Print the difference between LCM and HCF\n        print(lcm - hcf)\n    except EOFError:\n        pass\n\nif __name__ == '__main__':\n    solve()",
+      "attempts": 1,
+      "timestamp": "2026-09-29T15:45:45.991395"
+    },
+    "214": {
+      "program_id": "214",
+      "status": "passed",
+      "code": "import sys\n\ndef solve():\n    \"\"\"\n    The digital sum (also known as the digital root) of a number N \n    can be calculated using the property of congruence modulo 9.\n    For N > 0:\n    - If N % 9 == 0, the digital root is 9.\n    - Otherwise, the digital root is N % 9.\n    \"\"\"\n    try:\n        line = sys.stdin.readline()\n        if not line:\n            return\n        n_str = line.strip()\n        if not n_str:\n            return\n        \n        n = int(n_str)\n        \n        if n == 0:\n            print(0)\n        else:\n            result = n % 9\n            if result == 0:\n                print(9)\n            else:\n                print(result)\n    except EOFError:\n        pass\n\nif __name__ == '__main__':\n    solve()",
+      "attempts": 1,
+      "timestamp": "2026-09-29T15:46:11.239798"
+    },
+    "225": {
+      "program_id": "225",
+      "status": "passed",
+      "code": "import sys\n\ndef solve():\n    # Read input using strip to handle potential whitespace\n    try:\n        s = sys.stdin.readline().strip()\n        if not s:\n            return\n        a = sys.stdin.readline().strip()\n        b = sys.stdin.readline().strip()\n    except EOFError:\n        return\n\n    count = 0\n    # Iterate through the string up to the second to last character\n    # to check for the pattern A followed by B\n    for i in range(len(s) - 1):\n        if s[i] == a and s[i+1] == b:\n            count += 1\n            \n    print(count)\n\nif __name__ == \"__main__\":\n    solve()",
+      "attempts": 1,
+      "timestamp": "2026-09-29T15:46:34.993847"
+    },
+    "226": {
+      "program_id": "226",
+      "status": "passed",
+      "code": "import sys\n\ndef is_palindrome(n):\n    s = str(n)\n    return s == s[::-1]\n\ndef solve():\n    try:\n        line = sys.stdin.readline()\n        if not line:\n            return\n        n = int(line.strip())\n    except ValueError:\n        return\n\n    curr = n + 1\n    while True:\n        if is_palindrome(curr):\n            print(curr)\n            break\n        curr += 1\n\nif __name__ == '__main__':\n    solve()",
+      "attempts": 1,
+      "timestamp": "2026-09-29T15:47:03.101990"
+    },
+    "228": {
+      "program_id": "228",
+      "status": "passed",
+      "code": "import sys\n\ndef solve():\n    # Read the number of cars\n    try:\n        line = sys.stdin.readline()\n        if not line:\n            return\n        n = int(line.strip())\n    except ValueError:\n        return\n\n    max_efficiency = -1.0\n    best_car_index = -1\n\n    for i in range(1, n + 1):\n        try:\n            line = sys.stdin.readline()\n            if not line:\n                break\n            fuel, distance = map(float, line.split())\n            \n            # Efficiency is distance per unit of fuel (km/liter)\n            # Higher is better\n            efficiency = distance / fuel\n            \n            # We want the car with the highest efficiency.\n            # If efficiencies are equal, the problem implies the first one \n            # encountered is kept (standard behavior for \"find the car\").\n            if efficiency > max_efficiency:\n                max_efficiency = efficiency\n                best_car_index = i\n        except ValueError:\n            continue\n\n    if best_car_index != -1:\n        print(best_car_index)\n\nif __name__ == '__main__':\n    solve()",
+      "attempts": 1,
+      "timestamp": "2026-09-29T15:47:28.972612"
+    },
+    "229": {
+      "program_id": "229",
+      "status": "passed",
+      "code": "import sys\n\ndef solve():\n    # Read input from stdin\n    try:\n        line = sys.stdin.read().strip()\n        if not line:\n            return\n        # Split by whitespace and convert to integers\n        nums = list(map(int, line.split()))\n    except EOFError:\n        return\n\n    # Count frequencies of each number\n    counts = {}\n    for num in nums:\n        counts[num] = counts.get(num, 0) + 1\n\n    # Find the number with the maximum frequency\n    # In case of ties, choose the smaller number\n    max_freq = -1\n    result = None\n\n    # Sort keys to handle the tie-breaking condition easily\n    # If we iterate through sorted keys, we can update result only if \n    # current frequency is strictly greater than max_freq\n    for num in sorted(counts.keys()):\n        if counts[num] > max_freq:\n            max_freq = counts[num]\n            result = num\n            \n    print(result)\n\nif __name__ == '__main__':\n    solve()",
+      "attempts": 1,
+      "timestamp": "2026-09-29T15:47:53.705418"
+    },
+    "233": {
+      "program_id": "233",
+      "status": "passed",
+      "code": "import sys\n\ndef solve():\n    # Read the string S\n    try:\n        s = sys.stdin.readline().strip()\n        if not s:\n            return\n        \n        # Read the positions X and Y\n        line2 = sys.stdin.readline().strip()\n        if not line2:\n            return\n        x, y = map(int, line2.split())\n        \n        # The problem implies the string repeats infinitely.\n        # To find the character at position P (1-indexed), \n        # we use (P - 1) % length_of_string.\n        n = len(s)\n        \n        char_x = s[(x - 1) % n]\n        char_y = s[(y - 1) % n]\n        \n        if char_x == char_y:\n            print(\"YES\")\n        else:\n            print(\"NO\")\n            \n    except EOFError:\n        pass\n\nif __name__ == '__main__':\n    solve()",
+      "attempts": 1,
+      "timestamp": "2026-09-29T15:48:18.296826"
+    },
+    "238": {
+      "program_id": "238",
+      "status": "passed",
+      "code": "import sys\n\ndef solve():\n    # Read N\n    try:\n        line = sys.stdin.readline()\n        if not line:\n            return\n        n = int(line.strip())\n    except ValueError:\n        return\n\n    # Dictionary to store country-capital pairs\n    data = {}\n    \n    # Read N lines of country-capital pairs\n    for _ in range(n):\n        line = sys.stdin.readline().strip()\n        if line:\n            # Split by space. Note: Some country names might have spaces, \n            # but the problem implies \"name of the country and the name of the capital \n            # as string values separated by a space\". Assuming standard format.\n            parts = line.split()\n            if len(parts) >= 2:\n                country = parts[0]\n                capital = \" \".join(parts[1:])\n                data[country] = capital\n                \n    # Read the query country\n    query = sys.stdin.readline().strip()\n    \n    # Print result\n    if query in data:\n        print(data[query])\n    else:\n        print(\"NONE\")\n\nif __name__ == '__main__':\n    solve()",
+      "attempts": 1,
+      "timestamp": "2026-09-29T15:48:42.537711"
+    },
+    "243": {
+      "program_id": "243",
+      "status": "passed",
+      "code": "import sys\n\ndef solve():\n    # Read the input string\n    try:\n        s = sys.stdin.readline().strip()\n        if not s:\n            return\n    except EOFError:\n        return\n\n    # Define vowels\n    vowels = \"aeiouAEIOU\"\n    \n    # Identify indices of vowels in the original string\n    vowel_indices = [i for i, char in enumerate(s) if char in vowels]\n    \n    # Reverse the string\n    reversed_s = s[::-1]\n    \n    # The problem states: \"remove the letters in the positions of the vowels \n    # in the original string\" from the reversed string.\n    # This means if index 'i' was a vowel in the original string, \n    # we remove the character at index 'i' from the reversed string.\n    \n    result = []\n    for i in range(len(reversed_s)):\n        if i not in vowel_indices:\n            result.append(reversed_s[i])\n            \n    print(\"\".join(result))\n\nif __name__ == \"__main__\":\n    solve()",
+      "attempts": 1,
+      "timestamp": "2026-09-29T15:49:08.385271"
+    },
+    "2622": {
+      "program_id": "2622",
+      "status": "passed",
+      "code": "import sys\n\ndef solve():\n    # Read N and M\n    try:\n        line1 = sys.stdin.readline().strip()\n        if not line1:\n            return\n        n, m = map(int, line1.split())\n        \n        # Read the list of N integers\n        line2 = sys.stdin.readline().strip()\n        if not line2:\n            return\n        nums = list(map(int, line2.split()))\n        \n        # To find the minimum sum of exactly M integers,\n        # we sort the list in ascending order and sum the first M elements.\n        nums.sort()\n        \n        min_sum = sum(nums[:m])\n        \n        print(min_sum)\n    except ValueError:\n        pass\n\nif __name__ == '__main__':\n    solve()",
+      "attempts": 1,
+      "timestamp": "2026-09-29T15:49:47.964313"
+    },
+    "2623": {
+      "program_id": "2623",
+      "status": "passed",
+      "code": "import sys\n\ndef solve():\n    # Read N and M\n    try:\n        line1 = sys.stdin.readline().split()\n        if not line1:\n            return\n        n, m = map(int, line1)\n        \n        # Read start time\n        start_time_str = sys.stdin.readline().strip()\n        sh, sm = map(int, start_time_str.split(':'))\n        start_minutes = sh * 60 + sm\n        \n        # Read arrival times\n        arrival_times_str = sys.stdin.readline().split()\n        \n        on_time_count = 0\n        for time_str in arrival_times_str:\n            ah, am = map(int, time_str.split(':'))\n            arrival_minutes = ah * 60 + am\n            \n            # Student is on time if arrival <= start time\n            if arrival_minutes <= start_minutes:\n                on_time_count += 1\n        \n        # If on_time_count < M, class is cancelled (Yes)\n        # Else, class is not cancelled (No)\n        if on_time_count < m:\n            print(\"Yes\")\n        else:\n            print(\"No\")\n            \n    except ValueError:\n        pass\n\nif __name__ == '__main__':\n    solve()",
+      "attempts": 1,
+      "timestamp": "2026-09-29T15:50:17.449096"
+    },
+    "2624": {
+      "program_id": "2624",
+      "status": "passed",
+      "code": "import sys\n\ndef solve():\n    # Read L1 and L2\n    try:\n        line1 = sys.stdin.readline().split()\n        if not line1:\n            return\n        l1, l2 = map(int, line1)\n        \n        # Read array 1 and array 2\n        arr1 = list(map(int, sys.stdin.readline().split()))\n        arr2 = list(map(int, sys.stdin.readline().split()))\n        \n        # Convert to sets to get distinct elements\n        set1 = set(arr1)\n        set2 = set(arr2)\n        \n        # Elements in set1 but not in set2\n        diff1 = set1 - set2\n        \n        # Elements in set2 but not in set1\n        diff2 = set2 - set1\n        \n        # The count of distinct elements present in one but not the other\n        # is the size of the symmetric difference\n        result = len(diff1) + len(diff2)\n        \n        print(result)\n    except ValueError:\n        pass\n\nif __name__ == '__main__':\n    solve()",
+      "attempts": 1,
+      "timestamp": "2026-09-29T15:50:41.283637"
+    },
+    "209": {
+      "program_id": "209",
+      "status": "passed",
+      "code": "import math\nimport sys\n\ndef solve():\n    try:\n        # Read input lines\n        line1 = sys.stdin.readline().strip().split()\n        if not line1:\n            return\n        x1, y1 = map(int, line1)\n        \n        line2 = sys.stdin.readline().strip().split()\n        if not line2:\n            return\n        x2, y2 = map(int, line2)\n        \n        # Calculate Euclidean distance\n        distance = math.sqrt((x2 - x1)**2 + (y2 - y1)**2)\n        \n        # Format to 2 decimal places\n        print(\"{:.2f}\".format(distance))\n    except EOFError:\n        pass\n\nif __name__ == \"__main__\":\n    solve()",
+      "attempts": 1,
+      "timestamp": "2026-09-29T15:51:06.035234"
+    },
+    "215": {
+      "program_id": "215",
+      "status": "passed",
+      "code": "import sys\n\ndef solve():\n    \"\"\"\n    The problem defines the following mappings from the damaged keyboard:\n    - T can be K or T\n    - D can be G or D\n    - L can be R or L\n    - F can be R or F\n    \n    This means:\n    - If the character is 'T', it could have been 'K' or 'T' (2 possibilities).\n    - If the character is 'D', it could have been 'G' or 'D' (2 possibilities).\n    - If the character is 'L', it could have been 'R' or 'L' (2 possibilities).\n    - If the character is 'F', it could have been 'R' or 'F' (2 possibilities).\n    - Any other character has only 1 possibility.\n    \n    Wait, let's re-examine the logic:\n    \"Instead of K the keyboard may sometimes display T\" -> If we see T, it could be K or T.\n    \"Instead of G, the keyboard may sometimes display D\" -> If we see D, it could be G or D.\n    \"Instead of R sometimes it may display L and sometimes instead of R it displays F\" -> If we see L, it could be R or L. If we see F, it could be R or F.\n    \n    Total possibilities = product of possibilities for each character.\n    \"\"\"\n    try:\n        line = sys.stdin.readline()\n        if not line:\n            return\n        w = line.strip()\n        if not w:\n            return\n            \n        count = 1\n        for char in w:\n            if char in ('T', 'D', 'L', 'F'):\n                count *= 2\n        \n        print(count)\n    except EOFError:\n        pass\n\nif __name__ == '__main__':\n    solve()",
+      "attempts": 1,
+      "timestamp": "2026-09-29T15:51:31.185029"
+    },
+    "219": {
+      "program_id": "219",
+      "status": "passed",
+      "code": "import sys\n\ndef solve():\n    try:\n        lines = [line.strip() for line in sys.stdin if line.strip()]\n        if len(lines) < 3:\n            return\n        x = int(lines[0])\n        y = int(lines[1])\n        z = int(lines[2])\n    except Exception:\n        return\n\n    if x > y and x > z:\n        s = y\n        count = 0\n        while True:\n            a = x - s\n            count += 2\n            if a == z:\n                print(count)\n                return\n            elif x > a and a > z:\n                s += y\n            else:\n                print(\"-1\")\n                return\n    else:\n        print(\"-1\")\n\nif __name__ == '__main__':\n    solve()",
+      "attempts": 1,
+      "timestamp": "2026-09-29T16:17:01.810844"
+    },
+    "221": {
+      "program_id": "221",
+      "status": "passed",
+      "code": "import sys\n\ndef solve():\n    try:\n        p = sys.stdin.readline().strip()\n    except EOFError:\n        return\n\n    # Rule: Length between 8 and 25\n    if not (8 <= len(p) <= 25):\n        print(\"INVALID\")\n        return\n\n    # Rule: At least one special character among # ! _ $ @\n    special_chars = \"#!_$@\"\n    has_special = any(char in special_chars for char in p)\n    \n    # Rule: At least two numbers\n    num_count = sum(1 for char in p if char.isdigit())\n    \n    # Rule: At least one upper case and one lower case\n    has_upper = any(char.isupper() for char in p)\n    has_lower = any(char.islower() for char in p)\n    \n    if has_special and num_count >= 2 and has_upper and has_lower:\n        print(\"VALID\")\n    else:\n        print(\"INVALID\")\n\nif __name__ == \"__main__\":\n    solve()",
+      "attempts": 1,
+      "timestamp": "2026-09-29T16:17:25.564099"
+    },
+    "234": {
+      "program_id": "234",
+      "status": "passed",
+      "code": "import sys\n\ndef solve():\n    try:\n        line = sys.stdin.readline()\n        if not line:\n            return\n        n = int(line.strip())\n    except ValueError:\n        return\n\n    items = []\n    for _ in range(n):\n        parts = sys.stdin.readline().split()\n        if not parts:\n            continue\n        \n        name = parts[0]\n        price = int(parts[1])\n        discount_percent = int(parts[2])\n        \n        # Calculate the actual savings amount\n        savings = (price * discount_percent) / 100\n        items.append((name, savings))\n\n    # We want to leave out the item with the LEAST savings.\n    # If there are multiple items with the same minimum savings, \n    # the problem implies picking the one that results in the \n    # maximum savings for the remaining N-1 items.\n    # This is equivalent to finding the item with the minimum savings value.\n    \n    # Find the item with the minimum savings.\n    # If there's a tie, the problem doesn't specify, but usually \n    # the first one encountered is expected.\n    min_savings = float('inf')\n    item_to_remove = \"\"\n    \n    for name, savings in items:\n        if savings < min_savings:\n            min_savings = savings\n            item_to_remove = name\n            \n    print(item_to_remove)\n\nif __name__ == '__main__':\n    solve()",
+      "attempts": 1,
+      "timestamp": "2026-09-29T16:17:50.278152"
+    },
+    "237": {
+      "program_id": "237",
+      "status": "passed",
+      "code": "import sys\nimport math\n\ndef is_prime(n):\n    if n < 2:\n        return False\n    for i in range(2, int(math.sqrt(n)) + 1):\n        if n % i == 0:\n            return False\n    return True\n\ndef solve():\n    try:\n        line = sys.stdin.read().strip()\n        if not line:\n            return\n        nums = list(map(int, line.split()))\n    except EOFError:\n        return\n\n    primes = []\n    odds = []\n    evens = []\n\n    for n in nums:\n        if is_prime(n):\n            primes.append(n)\n        elif n % 2 != 0:\n            odds.append(n)\n        else:\n            evens.append(n)\n\n    primes.sort()\n    odds.sort()\n    evens.sort()\n\n    result = primes + odds + evens\n    print(*(result))\n\nif __name__ == '__main__':\n    solve()",
+      "attempts": 1,
+      "timestamp": "2026-09-29T16:18:33.412322"
+    },
+    "242": {
+      "program_id": "242",
+      "status": "passed",
+      "code": "import sys\n\ndef solve():\n    # Read input lines\n    try:\n        lines = sys.stdin.readlines()\n        if not lines:\n            return\n        m = lines[0].rstrip('\\r\\n')\n        x = int(lines[1].strip())\n        y = int(lines[2].strip())\n    except (EOFError, ValueError, IndexError):\n        return\n\n    result = []\n    for char in m:\n        if 'a' <= char <= 'z':\n            # Shift alphabets by X\n            new_char = chr((ord(char) - ord('a') + x) % 26 + ord('a'))\n            result.append(new_char)\n        elif '0' <= char <= '9':\n            # Shift digits by Y\n            new_digit = (int(char) + y)\n            # The sample shows that if the digit becomes >= 10, \n            # it acts as a multi-digit number (e.g., 4+6=10)\n            result.append(str(new_digit))\n        else:\n            # Keep spaces and special characters as is\n            result.append(char)\n            \n    print(\"\".join(result))\n\nif __name__ == '__main__':\n    solve()",
+      "attempts": 2,
+      "timestamp": "2026-09-29T16:19:08.400353"
+    },
+    "2611": {
+      "program_id": "2611",
+      "status": "passed",
+      "code": "import sys\n\ndef solve():\n    s = sys.stdin.readline().strip()\n    if not s:\n        return\n    \n    n = len(s)\n    mid = n // 2\n    \n    # The pattern is an X shape.\n    # For each row i from 0 to n-1:\n    # The two characters are at index i and index n-1-i.\n    # If i == n-1-i (the center row), only one character is printed.\n    \n    for i in range(n):\n        row = [' '] * n\n        left_idx = i\n        right_idx = n - 1 - i\n        \n        if left_idx == right_idx:\n            row[left_idx] = s[left_idx]\n        else:\n            row[left_idx] = s[left_idx]\n            row[right_idx] = s[right_idx]\n        \n        # Join the row and strip trailing spaces to match standard output expectations\n        # but keep internal spaces.\n        print(\"\".join(row).rstrip())\n\nif __name__ == '__main__':\n    solve()",
+      "attempts": 1,
+      "timestamp": "2026-09-29T16:19:44.792886"
+    },
+    "2613": {
+      "program_id": "2613",
+      "status": "passed",
+      "code": "import sys\n\ndef solve():\n    # Read the input string and strip any leading/trailing whitespace\n    try:\n        s = sys.stdin.readline().strip()\n        if not s:\n            return\n        \n        # Split the string into words based on whitespace\n        words = s.split()\n        \n        # Reverse the list of words\n        reversed_words = words[::-1]\n        \n        # Join the reversed list with a single space and print\n        print(\" \".join(reversed_words))\n    except EOFError:\n        pass\n\nif __name__ == \"__main__\":\n    solve()",
+      "attempts": 1,
+      "timestamp": "2026-09-29T16:20:08.677465"
+    },
+    "2614": {
+      "program_id": "2614",
+      "status": "passed",
+      "code": "import sys\n\ndef solve():\n    # Read input lines\n    try:\n        s_input = sys.stdin.readline().strip()\n        if not s_input:\n            return\n        w1 = sys.stdin.readline().strip()\n        w2 = sys.stdin.readline().strip()\n    except EOFError:\n        return\n\n    # Split string into words. \n    # Note: The problem uses non-breaking spaces in the example, \n    # so we split by whitespace.\n    words = s_input.split()\n    \n    # Find all indices of w1 and w2\n    indices1 = [i for i, word in enumerate(words) if word == w1]\n    indices2 = [i for i, word in enumerate(words) if word == w2]\n    \n    # If w1 and w2 are the same word, the distance is 1 \n    # (assuming there are at least two occurrences)\n    if w1 == w2:\n        min_dist = float('inf')\n        for i in range(len(indices1) - 1):\n            dist = abs(indices1[i+1] - indices1[i])\n            if dist < min_dist:\n                min_dist = dist\n        print(min_dist)\n        return\n\n    # Calculate minimum distance between any occurrence of w1 and w2\n    min_dist = float('inf')\n    for i1 in indices1:\n        for i2 in indices2:\n            dist = abs(i1 - i2)\n            if dist < min_dist:\n                min_dist = dist\n                \n    print(min_dist)\n\nif __name__ == '__main__':\n    solve()",
+      "attempts": 3,
+      "timestamp": "2026-09-29T16:21:02.927168"
+    },
+    "2615": {
+      "program_id": "2615",
+      "status": "passed",
+      "code": "import sys\n\ndef solve():\n    try:\n        line = sys.stdin.readline()\n        if not line:\n            return\n        n = int(line.strip())\n    except ValueError:\n        return\n\n    current_num = 1\n    for i in range(1, n + 1):\n        row = []\n        for j in range(i):\n            row.append(str(current_num))\n            current_num += 1\n        print(\" \".join(row))\n\nif __name__ == \"__main__\":\n    solve()",
+      "attempts": 1,
+      "timestamp": "2026-09-29T16:22:40.654745"
+    },
+    "2616": {
+      "program_id": "2616",
+      "status": "passed",
+      "code": "import sys\n\ndef is_collinear(p1, p2, p3):\n    \"\"\"\n    Checks if point p3 lies on the line segment connecting p1 and p2.\n    Using cross product to check collinearity and dot product to check bounds.\n    \"\"\"\n    x1, y1 = p1\n    x2, y2 = p2\n    x3, y3 = p3\n    \n    # Cross product (x2-x1)*(y3-y1) - (y2-y1)*(x3-x1) == 0\n    cross_product = (x2 - x1) * (y3 - y1) - (y2 - y1) * (x3 - x1)\n    if cross_product != 0:\n        return False\n    \n    # Check if p3 is between p1 and p2 (inclusive)\n    # Dot product check: (x3-x1)*(x3-x2) + (y3-y1)*(y3-y2) <= 0\n    dot_product = (x3 - x1) * (x3 - x2) + (y3 - y1) * (y3 - y2)\n    return dot_product <= 0\n\ndef solve():\n    try:\n        coords = []\n        for _ in range(4):\n            line = sys.stdin.readline().strip()\n            if not line:\n                break\n            coords.append(list(map(int, line.split())))\n        \n        if len(coords) < 4:\n            return\n\n        A = tuple(coords[0])\n        B = tuple(coords[1])\n        C = tuple(coords[2])\n        D = tuple(coords[3])\n\n        # Condition 1: B or D is in the straight line connecting A and C\n        cond1 = is_collinear(A, C, B) or is_collinear(A, C, D)\n        \n        # Condition 2: A or C is in the straight line connecting B and D\n        cond2 = is_collinear(B, D, A) or is_collinear(B, D, C)\n\n        if cond1 or cond2:\n            print(\"yes\")\n        else:\n            print(\"no\")\n            \n    except EOFError:\n        pass\n\nif __name__ == \"__main__\":\n    solve()",
+      "attempts": 1,
+      "timestamp": "2026-09-29T16:24:10.596205"
+    },
+    "2617": {
+      "program_id": "2617",
+      "status": "passed",
+      "code": "import sys\nimport re\n\ndef solve():\n    # Read the entire input string\n    try:\n        s = sys.stdin.read().strip()\n    except EOFError:\n        return\n\n    # The problem asks to count occurrences of \"a\", \"an\", and \"the\" as words.\n    # We need to handle punctuation and case-insensitivity.\n    # Using regex to find words: \\b matches word boundaries.\n    # We convert the string to lowercase to match \"a\", \"an\", \"the\" regardless of case.\n    \n    # Split by non-alphanumeric characters to isolate words\n    words = re.split(r'[^a-zA-Z0-9]', s)\n    \n    count = 0\n    articles = {'a', 'an', 'the'}\n    \n    for word in words:\n        if word.lower() in articles:\n            count += 1\n            \n    print(count)\n\nif __name__ == '__main__':\n    solve()",
+      "attempts": 1,
+      "timestamp": "2026-09-29T16:25:30.621709"
+    },
+    "2618": {
+      "program_id": "2618",
+      "status": "passed",
+      "code": "import sys\n\ndef solve():\n    # Read input from stdin\n    try:\n        line = sys.stdin.read().strip()\n        if not line:\n            return\n        nums = list(map(int, line.split()))\n    except EOFError:\n        return\n\n    n = len(nums)\n    if n == 0:\n        return\n\n    # Calculate the total product of all elements\n    total_product = 1\n    for x in nums:\n        total_product *= x\n    \n    # The result for each index i is total_product // nums[i]\n    # Since the problem guarantees non-zero values, division is safe.\n    result = []\n    for x in nums:\n        result.append(str(total_product // x))\n    \n    # Print the result as space-separated integers\n    print(\" \".join(result))\n\nif __name__ == \"__main__\":\n    solve()",
+      "attempts": 1,
+      "timestamp": "2026-09-29T16:25:55.079918"
+    },
+    "2619": {
+      "program_id": "2619",
+      "status": "passed",
+      "code": "import sys\n\ndef solve():\n    # Read input string\n    try:\n        s = sys.stdin.readline().strip()\n        if not s:\n            return\n    except EOFError:\n        return\n\n    n = len(s)\n    count = 0\n    \n    # A sub-palindrome is a substring that reads the same forwards and backwards.\n    # We need to count sub-palindromes with length >= 2.\n    # We can iterate over all possible substrings of length >= 2.\n    \n    for i in range(n):\n        for j in range(i + 2, n + 1):\n            substring = s[i:j]\n            # Check if the substring is a palindrome\n            if substring == substring[::-1]:\n                count += 1\n                \n    print(count)\n\nif __name__ == \"__main__\":\n    solve()",
+      "attempts": 1,
+      "timestamp": "2026-09-29T16:26:18.772621"
+    },
+    "2620": {
+      "program_id": "2620",
+      "status": "passed",
+      "code": "import sys\n\ndef solve():\n    # Read input\n    try:\n        input_data = sys.stdin.read().splitlines()\n        if not input_data:\n            return\n        m = input_data[0].strip()\n        c = int(input_data[1].strip())\n    except (EOFError, ValueError, IndexError):\n        return\n\n    n = len(m)\n    rows = n // c\n    \n    # The encrypted message was formed by filling a grid row by row,\n    # but alternating the direction of filling (left-to-right, then right-to-left).\n    # To reverse this, we reconstruct the grid.\n    \n    grid = [['' for _ in range(c)] for _ in range(rows)]\n    \n    idx = 0\n    for r in range(rows):\n        if r % 2 == 0:\n            # Row was filled left to right\n            for col in range(c):\n                grid[r][col] = m[idx]\n                idx += 1\n        else:\n            # Row was filled right to left\n            for col in range(c - 1, -1, -1):\n                grid[r][col] = m[idx]\n                idx += 1\n                \n    # The original message is read column by column (top to bottom)\n    # based on the standard matrix reading order.\n    result = []\n    for col in range(c):\n        for r in range(rows):\n            result.append(grid[r][col])\n            \n    print(\"\".join(result))\n\nif __name__ == \"__main__\":\n    solve()",
+      "attempts": 2,
+      "timestamp": "2026-09-29T16:27:02.113775"
+    },
+    "2621": {
+      "program_id": "2621",
+      "status": "passed",
+      "code": "import sys\n\ndef solve():\n    # Read input lines and strip whitespace\n    try:\n        line1 = sys.stdin.readline().strip()\n        line2 = sys.stdin.readline().strip()\n        \n        if not line1 or not line2:\n            return\n            \n        # Convert space-separated strings to lists of integers\n        goals_a = list(map(int, line1.split()))\n        goals_b = list(map(int, line2.split()))\n        \n        score_a = 0\n        score_b = 0\n        \n        # Iterate through the matches\n        for i in range(len(goals_a)):\n            if goals_a[i] > goals_b[i]:\n                score_a += 3\n            elif goals_b[i] > goals_a[i]:\n                score_b += 3\n            else:\n                score_a += 1\n                score_b += 1\n                \n        # Print the cumulative scores separated by a space\n        print(f\"{score_a} {score_b}\")\n        \n    except EOFError:\n        pass\n\nif __name__ == \"__main__\":\n    solve()",
+      "attempts": 1,
+      "timestamp": "2026-09-29T16:27:26.651479"
     }
   },
   "summary": {
-    "passed": 198,
+    "passed": 298,
     "failed": 0,
     "skipped": 0,
-    "total_processed": 198
+    "total_processed": 298
   }
 }

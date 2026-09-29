@@ -11,7 +11,7 @@ USERNAME = os.getenv("SKILLRACK_USERNAME")
 PASSWORD = os.getenv("SKILLRACK_PASSWORD")
 LLM_PROVIDER = os.getenv("LLM_PROVIDER", "gemini").lower()
 GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
-_env_model = os.getenv("GEMINI_MODEL", "gemini-3.5-flash-lite")
+_env_model = os.getenv("GEMINI_MODEL", "gemini-3.1-flash-lite")
 GEMINI_MODEL = _env_model
 
 # Parse HEADLESS from string into boolean
