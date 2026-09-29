@@ -552,7 +552,12 @@ def main():
         if CLOSE_BROWSER_ON_FINISH:
             bm.close()
         else:
-            log_info("[BROWSER] Keeping browser open for user review (CLOSE_BROWSER_ON_FINISH=False).")
+            log_info("[BROWSER] Keeping browser open for user review. Press Enter in terminal to close...")
+            try:
+                input()
+            except (KeyboardInterrupt, EOFError):
+                pass
+            bm.close()
 
 
 if __name__ == "__main__":
