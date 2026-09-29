@@ -1,7 +1,0 @@
-{
-  "pid": "2769",
-  "leftText": "Python3-H002 Strings\nStrings - Index\n\n\n\nStrings are treated as contiguous set of characters. Strings can be enclosed in single or double quotes.\n\nThe index starts from zero. Hence to print the first character of the string name, we use the code name[0]\nname = input()\nprint(name[0])\n\n\u00a0\n\nProgramID- 2769  SKILLRACK\n\nPrint 2nd Character\n\n\n\nComplete the program so that it prints the 2nd character of the input string value. (Assume the input length will be more than 2).\n\n\n\nMax Execution Time Limit: 5000 millisecs\nui-button\nAmbiance\nChaos\nClouds Midnight\nCobalt\nidle Fingers\nkrTheme\nMerbivore\nMerbivore Soft\nMono Industrial\nMonokai\nPastel on dark\nSolarized Dark\nTerminal\nTomorrow Night\nTomorrow Night Blue\nTomorrow Night Bright\nTomorrow Night 80s\nTwilight\nVibrant Ink\nChrome\nClouds\nCrimson Editor\nDawn\nDreamweaver\nEclipse\nGitHub\nIPlastic\nSolarized Light\nTextMate\nTomorrow\nXCode\nKuroir\nKatzenMilch\nSQL Server\n\n\nPython3 (3.12)\nPython3 (3.12)\n1\n2117250080034@rgit\n\n\n\n\n\n\nSave\n\t\nRun\n\t\n\t\t\n\n",
-  "edVal": "",
-  "prefixCode": "",
-  "suffixCode": "1\n2117250080034@rgit"
-}

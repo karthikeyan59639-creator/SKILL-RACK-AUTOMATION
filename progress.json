@@ -1,19 +1,1396 @@
 {
-  "H002": {
-    "status": "in_progress",
-    "completed_problems": 0,
-    "total_problems": 10,
-    "problems": {
-      "1": {
-        "section": "H002",
-        "problem": 1,
-        "status": "failed",
-        "timestamp": "2026-09-28T08:59:28.928557",
-        "screenshot": "E:\\Documents\\SKILL RACK AUTOMATION\\screenshots\\H002\\problem_01_failure.png",
-        "error": "Execution failed or timed out after 1 attempts. Expected: gfedcba | Actual: Traceback\u00a0(most\u00a0recent\u00a0call\u00a0last):"
-      }
+  "exercises": {
+    "2793": {
+      "program_id": "2793",
+      "status": "passed",
+      "code": "items = (1000,\"stars\",\"wars\")\nprint(f\"{items[0]} {items[1]}\")",
+      "attempts": 2,
+      "timestamp": "2026-09-28T15:16:00.122930"
     },
-    "problem_01": "failed",
-    "problem_02": "pending"
+    "2794": {
+      "program_id": "2794",
+      "status": "passed",
+      "code": "values = [100,200,300]\nvalues.extend([400, 500])\nfor v in values:\n    print (v, end=\" \")",
+      "attempts": 1,
+      "timestamp": "2026-09-28T18:09:30.183894"
+    },
+    "2795": {
+      "program_id": "2795",
+      "status": "passed",
+      "code": "values = [100,700,300,200,900]\nvalues.append(400)\nvalues.append(500)\nvalues.sort()\nfor v in values:\n    print (v, end=\" \")",
+      "attempts": 1,
+      "timestamp": "2026-09-28T18:13:13.695941"
+    },
+    "2796": {
+      "program_id": "2796",
+      "status": "passed",
+      "code": "values = [22, 54, 90]\nvalues.insert(0, 100)\nvalues.insert(3, 35)\nvalues.sort(reverse=True)\nfor v in values:\n    print (v, end=\" \")",
+      "attempts": 3,
+      "timestamp": "2026-09-28T18:14:58.711461"
+    },
+    "2797": {
+      "program_id": "2797",
+      "status": "passed",
+      "code": "values = [1, 2, 3, 4, 5]\nvalues.append(6)\nvalues.append(7)\nvalues.append(10)\nfor v in values:\n    print (v, end=\" \")",
+      "attempts": 1,
+      "timestamp": "2026-09-28T18:15:17.085432"
+    },
+    "2798": {
+      "program_id": "2798",
+      "status": "passed",
+      "code": "values = set()\nvalues.add(999)\nvalues.add(999)\nfor v in values:\n    print (v, end=\" \")",
+      "attempts": 1,
+      "timestamp": "2026-09-28T18:32:10.945248"
+    },
+    "2799": {
+      "program_id": "2799",
+      "status": "passed",
+      "code": "duplicatevalues = [1,2,4,5,3,5,4,3,2,1,2]\nnumberslist = list(set(duplicatevalues))\nnumberslist.sort()\nfor n in numberslist:\n    print (n, end=\" \")",
+      "attempts": 1,
+      "timestamp": "2026-09-28T18:32:26.890463"
+    },
+    "2800": {
+      "program_id": "2800",
+      "status": "passed",
+      "code": "a = 200\nb = 200\nc = 200\nd = 80\ne = 5\nprint (a+c/b-d/e)",
+      "attempts": 1,
+      "timestamp": "2026-09-28T19:17:23.077689"
+    },
+    "2801": {
+      "program_id": "2801",
+      "status": "passed",
+      "code": "num = int(input())\nprint(num % 9)",
+      "attempts": 1,
+      "timestamp": "2026-09-28T19:22:53.060213"
+    },
+    "2802": {
+      "program_id": "2802",
+      "status": "passed",
+      "code": "name = input()\nprint(name[0] + name[len(name) // 2])",
+      "attempts": 1,
+      "timestamp": "2026-09-28T19:28:27.597456"
+    },
+    "2803": {
+      "program_id": "2803",
+      "status": "passed",
+      "code": "num = int(input())\nif num % 2 != 0:\n    print(num)",
+      "attempts": 1,
+      "timestamp": "2026-09-28T19:28:44.355137"
+    },
+    "2804": {
+      "program_id": "2804",
+      "status": "passed",
+      "code": "age = int(input())\nif age > 59:\n    print('SENIOR')\nelse:\n    print('NOTSENIOR')",
+      "attempts": 1,
+      "timestamp": "2026-09-28T19:29:23.429544"
+    },
+    "2805": {
+      "program_id": "2805",
+      "status": "passed",
+      "code": "n = int(input())\nif n % 5 == 0:\n    print(n)\nelse:\n    print(n + 10)",
+      "attempts": 1,
+      "timestamp": "2026-09-28T19:29:41.606020"
+    },
+    "2806": {
+      "program_id": "2806",
+      "status": "passed",
+      "code": "N = int(input())\nif N >= 99:\n    print('YES')\nelse:\n    print('NO')",
+      "attempts": 1,
+      "timestamp": "2026-09-28T19:30:22.978047"
+    },
+    "2807": {
+      "program_id": "2807",
+      "status": "passed",
+      "code": "num = int(input())\nif num % 2 == 0 or num < 5001:\n    print('YES')\nelse:\n    print('NO')",
+      "attempts": 1,
+      "timestamp": "2026-09-28T19:30:50.354849"
+    },
+    "2808": {
+      "program_id": "2808",
+      "status": "passed",
+      "code": "N = 100\nif not(N == 100 or N == 200 or N == 300):\n    print (\"YES\")\nelse:\n    print (\"NO\")",
+      "attempts": 1,
+      "timestamp": "2026-09-28T19:31:07.749426"
+    },
+    "2809": {
+      "program_id": "2809",
+      "status": "passed",
+      "code": "numbers = list(map(int,input().split()))\nif 100 in numbers:\n    print('YES')\nelse:\n    print('NO')",
+      "attempts": 1,
+      "timestamp": "2026-09-28T19:32:16.815871"
+    },
+    "2822": {
+      "program_id": "2822",
+      "status": "passed",
+      "code": "age = int(input())\nif age >= 1 and age <= 12:\n    print('Child')\nelif age >= 13 and age <= 19:\n    print('Teen')\nelse:\n    print('Adult')",
+      "attempts": 1,
+      "timestamp": "2026-09-28T19:35:49.584047"
+    },
+    "2823": {
+      "program_id": "2823",
+      "status": "passed",
+      "code": "num = int(input())\nif num % 2 != 0:\n    if num <= 1000:\n        print(num * 2)\n    elif num <= 10000:\n        print(num - 200)\n    else:\n        print(num - 5000)\nelse:\n    print(num)",
+      "attempts": 1,
+      "timestamp": "2026-09-28T19:36:17.890055"
+    },
+    "2824": {
+      "program_id": "2824",
+      "status": "passed",
+      "code": "num = int(input())\nfor ctr in range(2, num + 1, 2):\n    print(ctr, end=' ')",
+      "attempts": 1,
+      "timestamp": "2026-09-28T19:36:51.128691"
+    },
+    "2825": {
+      "program_id": "2825",
+      "status": "passed",
+      "code": "num = int(input())\nctr = 5\nwhile(ctr <= num):\n    print(ctr, end=\" \")\n    ctr += 5",
+      "attempts": 1,
+      "timestamp": "2026-09-28T19:38:44.473919"
+    },
+    "2826": {
+      "program_id": "2826",
+      "status": "passed",
+      "code": "counter = 0\nloopcount = 9\nwhile(loopcount):\n    counter+=10\n    loopcount-=1\nelse:\n    counter+=10\nprint (counter)",
+      "attempts": 1,
+      "timestamp": "2026-09-28T19:40:16.995491"
+    },
+    "2827": {
+      "program_id": "2827",
+      "status": "passed",
+      "code": "price = 100\nmoneyinhand=200\nif price <= moneyinhand: print (\"BUY\")",
+      "attempts": 1,
+      "timestamp": "2026-09-28T19:40:50.875821"
+    },
+    "2828": {
+      "program_id": "2828",
+      "status": "passed",
+      "code": "x = int(input())\ny = int(input())\nstart = x if x % 2 != 0 else x + 1\nfor ctr in range(start, y + 1, 2):\n    print(ctr, end=' ')",
+      "attempts": 1,
+      "timestamp": "2026-09-28T19:42:21.440990"
+    },
+    "2829": {
+      "program_id": "2829",
+      "status": "passed",
+      "code": "inputvalue = input()\nvowels = ('a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U')\nfor ch in inputvalue:\n    if ch.isalpha() and ch not in vowels:\n        print(ch, end='')",
+      "attempts": 1,
+      "timestamp": "2026-09-28T19:42:36.610557"
+    },
+    "2830": {
+      "program_id": "2830",
+      "status": "passed",
+      "code": "numbers = list(map(int, input().split()))\nfor num in numbers:\n    if num % 2 != 0:\n        print(num, end=\" \")",
+      "attempts": 1,
+      "timestamp": "2026-09-28T19:44:34.648671"
+    },
+    "2831": {
+      "program_id": "2831",
+      "status": "passed",
+      "code": "s = input().strip()\nc = int(input())\nfor ch in s:\n    for _ in range(c):\n        print(ch, end='')",
+      "attempts": 1,
+      "timestamp": "2026-09-28T19:50:51.000000"
+    },
+    "2832": {
+      "program_id": "2832",
+      "status": "passed",
+      "code": "x = 10000000000000000000000000000000 - 888888888888889\ny = 888888888888889\nprint (x+y)",
+      "attempts": 1,
+      "timestamp": "2026-09-28T19:53:32.485698"
+    },
+    "2833": {
+      "program_id": "2833",
+      "status": "passed",
+      "code": "inputval = input()\nstringnumbers = inputval.split(\" \")\nnumbers = list(map(int, stringnumbers))\nproduct = 1\nfor num in numbers:\n    product *= num\nprint(product)",
+      "attempts": 1,
+      "timestamp": "2026-09-28T19:53:51.266803"
+    },
+    "2834": {
+      "program_id": "2834",
+      "status": "passed",
+      "code": "a = int(input())\nb = int(input())\nc = int(input())\nprint(min(a, b, c))",
+      "attempts": 1,
+      "timestamp": "2026-09-28T19:55:34.192576"
+    },
+    "2835": {
+      "program_id": "2835",
+      "status": "passed",
+      "code": "gender = input()\nif gender == 'm' or gender == 'M':\n    print('MALE')\nelif gender == 'f' or gender == 'F':\n    print('FEMALE')\nelse:\n    print('UNKNOWN')",
+      "attempts": 1,
+      "timestamp": "2026-09-28T19:55:49.834960"
+    },
+    "2836": {
+      "program_id": "2836",
+      "status": "passed",
+      "code": "strval = '''Apple Banana\nCarrot\nDoll Elephant\nFish Gateway\nHotspot Internet\nJack'''\nprint (strval)",
+      "attempts": 1,
+      "timestamp": "2026-09-28T20:20:21.412411"
+    },
+    "2837": {
+      "program_id": "2837",
+      "status": "passed",
+      "code": "strval = input()\nif strval.isdigit():\n    print(\"YES\")\nelse:\n    print(\"NO\")",
+      "attempts": 1,
+      "timestamp": "2026-09-28T20:21:09.189352"
+    },
+    "2838": {
+      "program_id": "2838",
+      "status": "passed",
+      "code": "strval = input()\nfor ch in strval:\n    if ch.islower():\n        print(ch, end=\"\")",
+      "attempts": 1,
+      "timestamp": "2026-09-28T20:24:51.802956"
+    },
+    "2839": {
+      "program_id": "2839",
+      "status": "passed",
+      "code": "s = input()\nprint(s[1::2])",
+      "attempts": 1,
+      "timestamp": "2026-09-28T20:25:48.848328"
+    },
+    "2840": {
+      "program_id": "2840",
+      "status": "passed",
+      "code": "s = input()\nfirst, rest = s.split(' ', 1)\nprint(first.swapcase() + ' ' + rest)",
+      "attempts": 1,
+      "timestamp": "2026-09-28T20:26:19.733462"
+    },
+    "2841": {
+      "program_id": "2841",
+      "status": "passed",
+      "code": "words = input().split()\nresult = [word for word in words if word.lower().startswith('t')]\nprint(*result)",
+      "attempts": 1,
+      "timestamp": "2026-09-28T21:16:32.826105"
+    },
+    "2842": {
+      "program_id": "2842",
+      "status": "passed",
+      "code": "numbers = list(map(int, input().split()))\nfor num in numbers[::-1]:\n    if num % 2 == 0:\n        print(num, end=' ')",
+      "attempts": 1,
+      "timestamp": "2026-09-28T21:18:01.180511"
+    },
+    "2843": {
+      "program_id": "2843",
+      "status": "passed",
+      "code": "numbers = [100,200,300,400,500]\nx = 3\ny = 1\ndel numbers[x]\ndel numbers[y]\nfor num in numbers:\n    print (num,end=\" \")",
+      "attempts": 3,
+      "timestamp": "2026-09-28T21:25:21.360457"
+    },
+    "2844": {
+      "program_id": "2844",
+      "status": "passed",
+      "code": "numbers = [100,200,300,400,500]\nnumbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]\nprint (len(numbers))",
+      "attempts": 1,
+      "timestamp": "2026-09-28T21:26:34.507629"
+    },
+    "2845": {
+      "program_id": "2845",
+      "status": "passed",
+      "code": "marks = list(map(int,input().split(\" \")))\nprint(min(marks))",
+      "attempts": 1,
+      "timestamp": "2026-09-28T21:26:59.628763"
+    },
+    "2846": {
+      "program_id": "2846",
+      "status": "passed",
+      "code": "marks = list(map(int, input().split()))\ncount = 0\nfor mark in marks:\n    if mark == 50 or mark == 100:\n        count += 1\nprint(count)",
+      "attempts": 2,
+      "timestamp": "2026-09-28T21:31:24.612533"
+    },
+    "2847": {
+      "program_id": "2847",
+      "status": "passed",
+      "code": "numbers = [100, 400, 900]\nnumbers = [100, 200, 400, 500, 600, 900, 1000]\nfor num in numbers:\n    print (num, end=\" \")",
+      "attempts": 2,
+      "timestamp": "2026-09-28T21:35:46.213188"
+    },
+    "2848": {
+      "program_id": "2848",
+      "status": "passed",
+      "code": "studentages = {\"Leena\": 15, \"Arun\": 12}\nprint (studentages[\"Leena\"], end=\" \")\nprint (studentages[\"Arun\"], end=\" \")",
+      "attempts": 1,
+      "timestamp": "2026-09-28T21:37:14.319536"
+    },
+    "2849": {
+      "program_id": "2849",
+      "status": "passed",
+      "code": "marks = {\"Physics\":45, \"Maths\":30}\nmarks[\"Physics\"] = 90\nprint (marks[\"Physics\"]+marks[\"Maths\"])",
+      "attempts": 1,
+      "timestamp": "2026-09-28T21:38:19.967513"
+    },
+    "2850": {
+      "program_id": "2850",
+      "status": "passed",
+      "code": "namelocation = {}\ninputpairs = input().split(\" \")\nfor index in range(0,len(inputpairs),2):\n    namelocation[inputpairs[index]] = inputpairs[index+1]\nfor name in namelocation:\n    if name.startswith('K'):\n        print(namelocation[name])",
+      "attempts": 1,
+      "timestamp": "2026-09-28T21:38:35.234500"
+    },
+    "2851": {
+      "program_id": "2851",
+      "status": "passed",
+      "code": "stockcount = {\"ABB\":15000, \"TCS\":1200, \"Google\":1000, \"NIIT\":4000}\ndel stockcount[\"ABB\"]\ndel stockcount[\"TCS\"]\ndel stockcount[\"NIIT\"]\nfor key in stockcount.keys():\n    print (stockcount[key], end=\" \")",
+      "attempts": 2,
+      "timestamp": "2026-09-28T21:48:19.830415"
+    },
+    "2852": {
+      "program_id": "2852",
+      "status": "passed",
+      "code": "itemtype = {\"Mango\":\"Fruit\", \"Rice\":\"Cereal\"}\nitemtype = {\"Carrot\":\"Vegetable\"}\nfor key in itemtype.keys():\n    print (key+\" \"+itemtype[key])",
+      "attempts": 3,
+      "timestamp": "2026-09-28T21:49:51.376808"
+    },
+    "2853": {
+      "program_id": "2853",
+      "status": "passed",
+      "code": "itembrand = {}\ninputpairs = list(input().split(\" \"))\nfor index in range (0, len(inputpairs),2):\n    itembrand[inputpairs[index]] = inputpairs[index+1]\nif \"Mobile\" in itembrand:\n    print(\"YES\")\nelse:\n    print(\"NO\")",
+      "attempts": 1,
+      "timestamp": "2026-09-28T22:01:06.109028"
+    },
+    "2854": {
+      "program_id": "2854",
+      "status": "passed",
+      "code": "import collections\ninputpairs = list(input().split(\" \"))\ninputlist = []\nfor index in range (0, len(inputpairs),2):\n    currpair=(inputpairs[index],inputpairs[index+1])\n    inputlist.append(currpair)\nitemprice = collections.OrderedDict(inputlist)\nfor key in itemprice.keys():\n    print (key+\" \"+itemprice[key])",
+      "attempts": 1,
+      "timestamp": "2026-09-28T22:06:04.842958"
+    },
+    "2855": {
+      "program_id": "2855",
+      "status": "passed",
+      "code": "x = 500\ny = 700\nz = 900\nstack = []\nstack.append(y)\nstack.append(z)\nprint (stack.pop(), end=\" \")\nstack.append(x)\nprint (stack.pop(), end=\" \")\nprint (stack.pop(), end=\" \")",
+      "attempts": 2,
+      "timestamp": "2026-09-28T22:12:17.068180"
+    },
+    "2856": {
+      "program_id": "2856",
+      "status": "passed",
+      "code": "x = 250\ny = 150\nz = 2222\nfrom collections import deque\nqueue = deque([300])\nprint (queue.popleft(), end=\" \")\nqueue.append(x)\nqueue.append(y)\nqueue.append(z)\nprint (queue.popleft(), end=\" \")\nprint (queue.pop(), end=\" \")\nprint (queue.popleft(), end=\" \")",
+      "attempts": 2,
+      "timestamp": "2026-09-28T22:13:11.356863"
+    },
+    "2857": {
+      "program_id": "2857",
+      "status": "passed",
+      "code": "x = 2200\ny = 4000\nz = 1500\nfrom collections import deque\nqueue = deque([])\nqueue.appendleft(x)\nqueue.appendleft(z)\nqueue.appendleft(y)\nprint (queue.popleft(), end=\" \")\nprint (queue.popleft(), end=\" \")\nprint (queue.popleft(), end=\" \")",
+      "attempts": 1,
+      "timestamp": "2026-09-28T22:13:41.311737"
+    },
+    "2859": {
+      "program_id": "2859",
+      "status": "passed",
+      "code": "marks = set()\nmarks.add(40)\nmarks.add(60)\nmarks.add(40)\nmarks.add(60)\ntotal = 0\nfor m in marks:\n    total+=m\nprint (total)",
+      "attempts": 3,
+      "timestamp": "2026-09-28T22:14:46.972574"
+    },
+    "2860": {
+      "program_id": "2860",
+      "status": "passed",
+      "code": "a = 10\nb = 2\nx = 5\ny = 1\nnumberpairs = {}\nnumberpairs[y] = x\nnumberpairs[b] = a\nproduct = 1\nfor key,val in numberpairs.items():\n    product*=val\nprint (product)",
+      "attempts": 2,
+      "timestamp": "2026-09-28T22:16:31.796261"
+    },
+    "2861": {
+      "program_id": "2861",
+      "status": "passed",
+      "code": "defaultvalue = \"NOTPRESENT\"\nletterword = {\"A\":\"Apple\", \"E\":\"Eagle\", \"S\":\"Snake\"}\nprint (letterword.get(\"A\",defaultvalue))   \nprint (letterword.get(\"B\",defaultvalue))  \nprint (letterword.get(\"R\",defaultvalue))   \nprint (letterword.get(\"E\",defaultvalue))",
+      "attempts": 1,
+      "timestamp": "2026-09-28T22:17:08.743080"
+    },
+    "2862": {
+      "program_id": "2862",
+      "status": "passed",
+      "code": "maths = list(map(int, input().split()))\nchem = list(map(int, input().split()))\ncombined = set(maths + chem)\nsorted_marks = sorted(list(combined))\nfor mark in sorted_marks:\n    print(mark, end=' ')",
+      "attempts": 1,
+      "timestamp": "2026-09-28T22:23:23.578631"
+    },
+    "2864": {
+      "program_id": "2864",
+      "status": "passed",
+      "code": "def fourtimes(x):\n    return x * 4\nnum = int(input())\nprint (fourtimes(num))",
+      "attempts": 1,
+      "timestamp": "2026-09-28T22:23:52.949439"
+    },
+    "2865": {
+      "program_id": "2865",
+      "status": "passed",
+      "code": "def modifyvalues(items):\n    items[:] = [500, 600, 700]\nnumbers = [1,2,3]\nmodifyvalues(numbers)\nfor num in numbers:\n    print (num, end=\" \")",
+      "attempts": 1,
+      "timestamp": "2026-09-28T22:50:34.227025"
+    },
+    "2866": {
+      "program_id": "2866",
+      "status": "passed",
+      "code": "def changevalues(marks):\n    marks[0] = 40\n    return\n    marks[0] = 50\n    marks[1] = 60\n    marks[2] = 70\n\nstudentmarks = [10, 50, 60]\nchangevalues(studentmarks)\nfor m in studentmarks:\n    print (m, end=\" \")",
+      "attempts": 1,
+      "timestamp": "2026-09-28T23:17:13.783361"
+    },
+    "2867": {
+      "program_id": "2867",
+      "status": "passed",
+      "code": "def changevalues(x, y, z):\n    y[0] = x\n    y[1] = z\n    x = z\n    z = 40\nx = 20\ny = [0, 0]\nz = 30\nchangevalues(x,y,z)\nprint (x+y[0]+y[1]+z)",
+      "attempts": 1,
+      "timestamp": "2026-09-28T23:19:40.019654"
+    },
+    "2868": {
+      "program_id": "2868",
+      "status": "passed",
+      "code": "def printName(firstname, lastname):\n    print(firstname, lastname)\nstr1 = input().strip()\nstr2 = input().strip()\nprintName(firstname=str1, lastname=str2)",
+      "attempts": 1,
+      "timestamp": "2026-09-28T23:22:15.277688"
+    },
+    "2869": {
+      "program_id": "2869",
+      "status": "passed",
+      "code": "def printSum(a, b, c=200):\n    print(a + b + c)\nprintSum(120,180)\nprintSum(100,200,300)",
+      "attempts": 1,
+      "timestamp": "2026-09-28T23:27:07.205840"
+    },
+    "2870": {
+      "program_id": "2870",
+      "status": "passed",
+      "code": "def findPerimeter(*sides):\n    perimeter = 0\n    for s in sides:\n        perimeter += s\n    return perimeter\n    \nprint (findPerimeter(5,4,3))\nprint (findPerimeter(10,10,10,10))\nprint (findPerimeter(200,50,40,80,160))",
+      "attempts": 1,
+      "timestamp": "2026-09-28T23:30:37.684857"
+    },
+    "2871": {
+      "program_id": "2871",
+      "status": "passed",
+      "code": "def printClassInfo(teacher, leader, *students):\n    print (\"Teacher-\"+teacher)\n    print (\"Leader-\"+leader)\n    for stud in students:\n        print (stud, end=\" \")\n    print (\"\")\n        \nprintClassInfo(\"Sheela\", \"Balakrishnan\", \"Ramya\", \"Arun\", \"Malini\")\nprintClassInfo(\"Melina\", \"Joseph\", \"Kavitha\", \"Muzambil\", \"Razana\", \"Mayank\", \"Sasikala\")",
+      "attempts": 1,
+      "timestamp": "2026-09-28T23:32:46.476034"
+    },
+    "2872": {
+      "program_id": "2872",
+      "status": "passed",
+      "code": "a = 10\nb = 5\nc = 1\nequate = lambda x:x**2 + 2*x +1\nprint (equate(a))\nprint (equate(b))\nprint (equate(c))",
+      "attempts": 1,
+      "timestamp": "2026-09-28T23:34:09.370225"
+    },
+    "2873": {
+      "program_id": "2873",
+      "status": "passed",
+      "code": "def getPerimeterArea(length, breadth):\n    return 2 * (length + breadth), length * breadth\nlength = int(input())\nbreadth = int(input())\n(perimeter,area) = getPerimeterArea(length, breadth)\nprint (perimeter)\nprint (area)",
+      "attempts": 1,
+      "timestamp": "2026-09-28T23:35:28.348100"
+    },
+    "2874": {
+      "program_id": "2874",
+      "status": "passed",
+      "code": "import NumberUtil\nN = int(input())\nNumberUtil.print1toN(N)",
+      "attempts": 1,
+      "timestamp": "2026-09-28T23:37:01.665089"
+    },
+    "2875": {
+      "program_id": "2875",
+      "status": "passed",
+      "code": "from NumberUtil import printEvenNumbersFrom1toN\nN = int(input())\nprintEvenNumbersFrom1toN(N)",
+      "attempts": 1,
+      "timestamp": "2026-09-28T23:37:17.000000"
+    },
+    "2876": {
+      "program_id": "2876",
+      "status": "passed",
+      "code": "from DiwaliDiscount import *\nfrom NewYearDiscount import *",
+      "attempts": 1,
+      "timestamp": "2026-09-28T23:40:18.265718"
+    },
+    "2877": {
+      "program_id": "2877",
+      "status": "passed",
+      "code": "import AdvancedCalculator\nfor m in sorted(dir(AdvancedCalculator)):\n    if not m.startswith('__') and callable(getattr(AdvancedCalculator, m)):\n        print(m)",
+      "attempts": 1,
+      "timestamp": "2026-09-28T23:53:03.814849"
+    },
+    "2878": {
+      "program_id": "2878",
+      "status": "passed",
+      "code": "EMPLOYEECOUNT = 50\ndef printNetExpense():\n    expensePeremployee = 1000\n    print (expensePeremployee*EMPLOYEECOUNT)\n    \nprintNetExpense()",
+      "attempts": 1,
+      "timestamp": "2026-09-28T23:55:38.339813"
+    },
+    "2879": {
+      "program_id": "2879",
+      "status": "passed",
+      "code": "score = 100\n\ndef printScore():\n    score = 50\n    print (score)\n    #method printScore() ends here\n\nprintScore()\nprint (score)",
+      "attempts": 1,
+      "timestamp": "2026-09-28T23:58:55.158045"
+    },
+    "2880": {
+      "program_id": "2880",
+      "status": "passed",
+      "code": "touristcount = 3000\ndef calculateTouristCount(currcount):\n    global touristcount\n    touristcount += currcount\ncurrcount = int(input())\ncalculateTouristCount(currcount)\nprint (touristcount)",
+      "attempts": 1,
+      "timestamp": "2026-09-29T00:01:37.145076"
+    },
+    "2881": {
+      "program_id": "2881",
+      "status": "passed",
+      "code": "def creditAmountToAccount(credit):\n    assert credit >= 0, \"Negative Credit Amount\"\n    print(credit)\ntry:\n    creditAmountToAccount(1500)\n    creditAmountToAccount(-100)    \nexcept AssertionError as ae:\n    print (ae)",
+      "attempts": 1,
+      "timestamp": "2026-09-29T00:03:50.000000"
+    },
+    "2882": {
+      "program_id": "2882",
+      "status": "passed",
+      "code": "marks = [66,45,87]\n\ntry:\n    print (marks[5])\nexcept IndexError:\n    print(\"Invalid Index\")",
+      "attempts": 1,
+      "timestamp": "2026-09-29T00:06:17.778720"
+    },
+    "2883": {
+      "program_id": "2883",
+      "status": "passed",
+      "code": "x = int(input())\ntry:\n    assert(1 <= x and x <= 100)\nexcept AssertionError:\n    print (\"Invalid\")\nelse:\n    print(\"Valid\")",
+      "attempts": 1,
+      "timestamp": "2026-09-29T00:08:07.192567"
+    },
+    "2884": {
+      "program_id": "2884",
+      "status": "passed",
+      "code": "x = int(input())\ny = int(input())\nname = input()\n\nscores = [40,71,102,34]\nbatsmanruns = {\"Dhoni\":350, \"Kohli\":410, \"Smith\":212}\n\ntry:\n    scores[x] += 10\n    batsmanscore = batsmanruns[name]\n    assert (y > 9), \"Very Small Number\"\nexcept:\n    print(\"Failure\")\nelse:\n    print(\"Success\")",
+      "attempts": 1,
+      "timestamp": "2026-09-29T00:09:46.331047"
+    },
+    "2885": {
+      "program_id": "2885",
+      "status": "passed",
+      "code": "x = 3\nindex = int(input())\npricelist = [100,200,300,400,500,600]\ntry:\n    assert (index > x), \"Invalid\"\n    pricelist[index] += 10\nexcept (IndexError, AssertionError):\n    print (\"Failure\")\nelse:\n    print (\"Success\")",
+      "attempts": 1,
+      "timestamp": "2026-09-29T00:18:31.183509"
+    },
+    "2886": {
+      "program_id": "2886",
+      "status": "passed",
+      "code": "key = input()\ncountrycapital = {\"India\":\"Delhi\", \"Srilanka\":\"Colombo\", \"China\":\"Beijing\", \"Cuba\":\"Havana\", \"Germany\":\"Berlin\"}\ntry:\n    capital = countrycapital[key]\nexcept KeyError:\n    print (\"Key Not Present\")\nelse:\n    print (capital)\nfinally:\n    print(\"Done\")",
+      "attempts": 1,
+      "timestamp": "2026-09-29T00:18:47.148368"
+    },
+    "2887": {
+      "program_id": "2887",
+      "status": "passed",
+      "code": "price = int(input())\nmessage = input()\ntry:\n    if price > 1000:\n        raise Exception(message)\n    print(\"Add To Cart\")\nexcept Exception as e:\n    print (str(e))",
+      "attempts": 1,
+      "timestamp": "2026-09-29T00:19:04.411650"
+    },
+    "2888": {
+      "program_id": "2888",
+      "status": "passed",
+      "code": "class InsufficientFundsException(Exception):\n    def __init__(self, message):\n        super().__init__(message)",
+      "attempts": 1,
+      "timestamp": "2026-09-29T00:19:20.419793"
+    },
+    "2889": {
+      "program_id": "2889",
+      "status": "passed",
+      "code": "import re\npattern = \"[a-zA-Z]\"\ninputvalue = input()\nresults = re.findall(pattern, inputvalue)\nfor r in results:\n    print (r,end=\"\")",
+      "attempts": 1,
+      "timestamp": "2026-09-29T00:19:46.011175"
+    },
+    "2890": {
+      "program_id": "2890",
+      "status": "passed",
+      "code": "import re\npattern = \"[^a-zA-Z]\"\ninputvalue = input()\nresults = re.findall(pattern, inputvalue)\nfor r in results:\n    print (r,end=\"\")",
+      "attempts": 1,
+      "timestamp": "2026-09-29T00:23:17.525737"
+    },
+    "2891": {
+      "program_id": "2891",
+      "status": "passed",
+      "code": "import re\ninputvalue = input()\nresults = re.findall(r\"\\S\", inputvalue)\nfor r in results:\n    print (r,end=\"\")",
+      "attempts": 1,
+      "timestamp": "2026-09-29T00:23:34.429986"
+    },
+    "2892": {
+      "program_id": "2892",
+      "status": "passed",
+      "code": "import re\ninputvalue = input()\nresults = re.findall(r\"xy+\", inputvalue)\nfor r in results:\n    print(r, end=\"\")",
+      "attempts": 1,
+      "timestamp": "2026-09-29T00:23:50.429691"
+    },
+    "2893": {
+      "program_id": "2893",
+      "status": "passed",
+      "code": "import re\ninputvalue = input()\nresults = re.findall(r\"zzzz\", inputvalue)\nfor r in results:\n    print(r, end=\"\")",
+      "attempts": 1,
+      "timestamp": "2026-09-29T00:24:08.913075"
+    },
+    "2894": {
+      "program_id": "2894",
+      "status": "passed",
+      "code": "import re\ninputvalue = input()\nresults = re.findall(r\"1{2}|2{2}|3{2}\", inputvalue)\nfor r in results:\n    print(r, end=\"\")",
+      "attempts": 1,
+      "timestamp": "2026-09-29T00:24:25.621494"
+    },
+    "2896": {
+      "program_id": "2896",
+      "status": "passed",
+      "code": "import re\ninputvalue = input()\nresults = re.findall(r\"JJJ\", inputvalue)\nfor r in results:\n    print(r, end=\" \")",
+      "attempts": 1,
+      "timestamp": "2026-09-29T00:25:04.473132"
+    },
+    "2897": {
+      "program_id": "2897",
+      "status": "passed",
+      "code": "import re\ninputvalue = input()\ncount=0\nresults = re.findall(r\"(?<=abc)d\", inputvalue)\nfor r in results:\n    count+=1\nprint (count)",
+      "attempts": 1,
+      "timestamp": "2026-09-29T00:25:27.869983"
+    },
+    "2900": {
+      "program_id": "2900",
+      "status": "passed",
+      "code": "import re\ninputvalue = input()\ncount=0\nresults = re.findall(r\"ab(?!cd|xy)\", inputvalue)\nfor r in results:\n    count += 1\nprint (count)",
+      "attempts": 1,
+      "timestamp": "2026-09-29T00:26:31.460620"
+    },
+    "2901": {
+      "program_id": "2901",
+      "status": "passed",
+      "code": "import re\ns = input()\nnumbers = re.findall(r'(?<!\\d)\\d{2}(?!\\d)', s)\nprint(' '.join(numbers))",
+      "attempts": 1,
+      "timestamp": "2026-09-29T00:26:49.959713"
+    },
+    "2902": {
+      "program_id": "2902",
+      "status": "passed",
+      "code": "f = open(\"data.txt\", \"r\")\nprint (f.read())\nf.close()",
+      "attempts": 1,
+      "timestamp": "2026-09-29T00:27:18.583102"
+    },
+    "2903": {
+      "program_id": "2903",
+      "status": "passed",
+      "code": "f = open(\"output.txt\", \"w\")\nf.write(input())\nf.close()\n#Test if the file contains the input string by reading and printing it.\nf = open(\"output.txt\",\"r\")\nprint (f.read())\nf.close()",
+      "attempts": 1,
+      "timestamp": "2026-09-29T00:31:03.329960"
+    },
+    "2904": {
+      "program_id": "2904",
+      "status": "passed",
+      "code": "f = open(\"output.txt\", \"a\")\nf.write(\"\\nActor3 - IJKL\")\nf.close()\n#Print the file content as output\nf = open(\"output.txt\",\"r\")\nprint (f.read())\nf.close()",
+      "attempts": 1,
+      "timestamp": "2026-09-29T00:56:08.432447"
+    },
+    "2905": {
+      "program_id": "2905",
+      "status": "passed",
+      "code": "with open(\"data.txt\", \"r\") as f:\n    for count,line in enumerate(f, start=1): \n        if count % 2 == 1:\n            print (line, end=\"\")",
+      "attempts": 1,
+      "timestamp": "2026-09-29T00:59:12.989084"
+    },
+    "2906": {
+      "program_id": "2906",
+      "status": "passed",
+      "code": "N = int(input())\nwith open('data.txt', 'r') as f:\n    for _ in range(N):\n        print(f.readline(), end='')",
+      "attempts": 1,
+      "timestamp": "2026-09-29T00:59:34.252121"
+    },
+    "2907": {
+      "program_id": "2907",
+      "status": "passed",
+      "code": "import linecache\nN = int(input())\nprint(linecache.getline(\"data.txt\", N), end=\"\")",
+      "attempts": 1,
+      "timestamp": "2026-09-29T01:00:19.848520"
+    },
+    "2908": {
+      "program_id": "2908",
+      "status": "passed",
+      "code": "N = int(input())\nwith open('data.txt', 'r') as f:\n    f.seek(N - 1)\n    print(f.read(), end='')",
+      "attempts": 3,
+      "timestamp": "2026-09-29T01:10:54.692555"
+    },
+    "2909": {
+      "program_id": "2909",
+      "status": "passed",
+      "code": "import os\nnewfilename = input().strip()\nos.rename(\"data.txt\", newfilename)\n#Open the new file and print the content of the file.\nwith open (newfilename,\"r\") as f:\n    print (f.read())",
+      "attempts": 1,
+      "timestamp": "2026-09-29T01:11:25.152608"
+    },
+    "2910": {
+      "program_id": "2910",
+      "status": "passed",
+      "code": "import fileinput\nfor line in fileinput.input('data.txt', inplace=True):\n    print(line.upper(), end=\"\")\n#Check if the upper case conversion has been performed\nwith open(\"data.txt\", \"r\") as f:\n    print (f.read())",
+      "attempts": 3,
+      "timestamp": "2026-09-29T01:12:48.242951"
+    },
+    "2911": {
+      "program_id": "2911",
+      "status": "passed",
+      "code": "import sys\n\nfilename = input().strip()\nvowels = set('aeiouAEIOU')\ncount = 0\n\nwith open(filename, 'r') as f:\n    for line in f:\n          for word in line.split():\n              if word and word[0] in vowels:\n                  count += 1\n\nprint(count)",
+      "attempts": 1,
+      "timestamp": "2026-09-29T01:13:13.512482"
+    },
+    "2912": {
+      "program_id": "2912",
+      "status": "passed",
+      "code": "class Employee:\n    employeecount = 0\n    total_salary = 0\n\n    def __init__(self, name, salary):\n        self.name = name\n        self.salary = salary\n        Employee.employeecount += 1\n        Employee.total_salary += salary\n\n    @classmethod\n    def getTotalSalaryPaidToEmployees(cls):\n        return cls.total_salary\nemployees  = [Employee(\"Adira\",5000), Employee(\"Manisha\",12000), Employee(\"CEO\",90000)]\nprint (Employee.getTotalSalaryPaidToEmployees())",
+      "attempts": 1,
+      "timestamp": "2026-09-29T01:13:49.909450"
+    },
+    "2913": {
+      "program_id": "2913",
+      "status": "passed",
+      "code": "class Employee:\n    employeecount=0\n    totalsalary = 0\n    \n    def __init__(self, name, salary):\n        self.name = name\n        self.salary = salary\n        Employee.employeecount+=1\n        Employee.totalsalary+=salary\n    def __del__(self):\n        Employee.employeecount -= 1\n        Employee.totalsalary -= self.salary\n    def getTotalSalaryPaidToEmployees():\n        return Employee.totalsalary\n      \nemployees  = [Employee(\"Adira\",5000), Employee(\"Manisha\",12000), Employee(\"CEO\",90000)]\nprint (Employee.getTotalSalaryPaidToEmployees())\ndel employees[1]\nprint (Employee.getTotalSalaryPaidToEmployees())",
+      "attempts": 1,
+      "timestamp": "2026-09-29T10:24:55.279016"
+    },
+    "2914": {
+      "program_id": "2914",
+      "status": "passed",
+      "code": "class College:\n       \n    def __init__(self, name):\n        self.name = name\n        \n    def getName(self):\n        return self.name\n        \nclass Department(College):\n    def __init__(self, name):\n        super().__init__(name)\n        \n\ndepartments = []\ndepartments.append(Department(\"ECE\"))\ndepartments.append(Department(\"CSE\"))\ndepartments.append(Department(\"IT\"))\ndepartments.append(Department(\"MECH\"))\ndepartments.append(Department(\"CIVIL\"))\ndepartments.append(Department(\"EEE\"))\ndepartments.append(Department(\"AUTO\"))\ndepartments.append(Department(\"EIE\"))\nfor dept in departments:\n    print (dept.getName(), end=\" \")",
+      "attempts": 1,
+      "timestamp": "2026-09-29T10:25:11.035704"
+    },
+    "2915": {
+      "program_id": "2915",
+      "status": "passed",
+      "code": "class A:\n    def method1(self):\n        print(\"Method1\")\n\nclass B:\n    def method2(self):\n        print(\"Method2\")\n\nclass C:\n    def method3(self):\n        print(\"Method3\")\nclass D(A,B,C):\n    def method4(self):\n        print (\"Method4\")\n        \nchild = D()\nchild.method1()\nchild.method2()\nchild.method3()\nchild.method4()",
+      "attempts": 1,
+      "timestamp": "2026-09-29T10:25:26.827211"
+    },
+    "2916": {
+      "program_id": "2916",
+      "status": "passed",
+      "code": "class A:\n    def callMe(self):\n        print (\"MethodA\")\nclass C:\n    def callMe(self):\n        print(\"MethodC\")\nclass B:\n    pass\nclass Child(C,A,B):\n     def hello(self):\n         print (\"Hello\")\n     \nchild = Child()\nchild.callMe()",
+      "attempts": 1,
+      "timestamp": "2026-09-29T10:30:08.993595"
+    },
+    "2917": {
+      "program_id": "2917",
+      "status": "passed",
+      "code": "class University:           \n    def __init__(self, universityname):\n        self.universityname = universityname\n        \n    def getUniversityName(self):\n        return self.universityname\n        \nclass Location:           \n    def __init__(self, locationname):\n        self.locationname = locationname\n        \n    def getLocationName(self):\n        return self.locationname\n\nclass College(University, Location):\n    def __init__(self, collegename, universityname, locationname,studentcount):\n        self.collegename = collegename\n        self.studentcount = studentcount\n        University.__init__(self,universityname)\n        Location.__init__(self,locationname)\n    def getCollegeName(self):\n        return self.collegename\n        \n    def getStudentCount(self):\n        return self.studentcount\ncoll = College(\"ABC Engineering College\",\"Anna University\",\"Chennai\",500)\nprint (coll.getUniversityName())\nprint (coll.getLocationName())\nprint (coll.getCollegeName())\nprint (coll.getStudentCount())\ndel coll\ncoll = College(\"XYZ Engineering College\",\"VTU University\",\"Tumkur\",400)\nprint (coll.getUniversityName())\nprint (coll.getLocationName())\nprint (coll.getCollegeName())\nprint (coll.getStudentCount())",
+      "attempts": 1,
+      "timestamp": "2026-09-29T10:30:24.743185"
+    },
+    "2918": {
+      "program_id": "2918",
+      "status": "passed",
+      "code": "class Student:\n    def __init__(self, marks):\n        self.marks = marks\n    def __str__(self):\n        return f\"Student with marks {self.marks}\"\nstud = Student(500)\nprint (stud)",
+      "attempts": 1,
+      "timestamp": "2026-09-29T10:30:40.837034"
+    },
+    "2919": {
+      "program_id": "2919",
+      "status": "passed",
+      "code": "class Student:           \n    def __init__(self, name, marks):\n        self.name = name\n        self.marks = marks\n    \n    def __cmp__(self, other):\n        return self.marks > other.marks\n    \n    def getName(self):\n        return self.name\n        \nstudents = []\nN = int(input())\nfor ctr in range(1,N+1):\n    namemarksarr = input().split(\" \")\n    students.append(Student(namemarksarr[0],int(namemarksarr[1])))\nstudents.sort(key=lambda stud: stud.name)\nfor s in students:\n    print (s.getName()+\" \"+str(s.marks))",
+      "attempts": 1,
+      "timestamp": "2026-09-29T10:30:56.176123"
+    },
+    "2920": {
+      "program_id": "2920",
+      "status": "passed",
+      "code": "class A:           \n    def getName(self):\n        return \"Lion\"\n        \nclass B(A):\n    def getName(self):\n        return \"Tiger\"\nchild = B()\nprint (child.getName())",
+      "attempts": 1,
+      "timestamp": "2026-09-29T10:33:02.560970"
+    },
+    "2921": {
+      "program_id": "2921",
+      "status": "passed",
+      "code": "class Country:\n    __population=0;\n    \n    def __init__(self, populationcount):\n        self.__population = populationcount\n\npopln = int(input())\nc = Country(popln)\nprint(c._Country__population)",
+      "attempts": 1,
+      "timestamp": "2026-09-29T10:33:17.708542"
+    },
+    "2922": {
+      "program_id": "2922",
+      "status": "passed",
+      "code": "N = int(input())\nfor num in range(1,N+1):\n    if num%5 == 0:\n        continue\n    else:\n        print (num, end=\" \")",
+      "attempts": 1,
+      "timestamp": "2026-09-29T10:33:42.719375"
+    },
+    "2923": {
+      "program_id": "2923",
+      "status": "passed",
+      "code": "N = int(input())\nfor num in range(N,N+9):\n    print (num, end=\" \")\n    if num % 9 == 0:\n        break",
+      "attempts": 1,
+      "timestamp": "2026-09-29T10:35:56.651537"
+    },
+    "2924": {
+      "program_id": "2924",
+      "status": "passed",
+      "code": "x = 6\ny = 19\noldlist = [i for i in range(x,y) if i%3 == 0]\nnewlist = [j*3 for j in oldlist]\nfor num in newlist:\n    print (num, end=\" \")",
+      "attempts": 1,
+      "timestamp": "2026-09-29T10:43:55.639319"
+    },
+    "2925": {
+      "program_id": "2925",
+      "status": "passed",
+      "code": "r, c = map(int, input().split())\nmatrix = [list(map(int, input().split())) for _ in range(r)]\nprint(matrix[0][0] + matrix[0][c-1] + matrix[r-1][0] + matrix[r-1][c-1])",
+      "attempts": 1,
+      "timestamp": "2026-09-29T10:49:26.443429"
+    },
+    "2926": {
+      "program_id": "2926",
+      "status": "passed",
+      "code": "numbers = list(map(int, input().split()))\nodds = filter(lambda num: num % 2 != 0, numbers)\nfor o in odds:\n    print(o, end=\" \")",
+      "attempts": 1,
+      "timestamp": "2026-09-29T10:49:43.863262"
+    },
+    "2927": {
+      "program_id": "2927",
+      "status": "passed",
+      "code": "numbers = list(map(int, input().split()))\nresult = map(lambda num: num * 5, numbers)\nfor r in result:\n    print(r, end=\" \")",
+      "attempts": 1,
+      "timestamp": "2026-09-29T10:50:00.659201"
+    },
+    "2928": {
+      "program_id": "2928",
+      "status": "passed",
+      "code": "from functools import reduce\nnumbers = list(map(int,input().strip().split(\" \")))\nmaxnum = max(numbers)\nprint (maxnum)",
+      "attempts": 1,
+      "timestamp": "2026-09-29T10:50:17.382299"
+    },
+    "11008": {
+      "program_id": "11008",
+      "status": "passed",
+      "code": "MFIB - Add 10, 20 and 30",
+      "attempts": 1,
+      "timestamp": "2026-09-29T13:21:36.933898"
+    },
+    "11009": {
+      "program_id": "11009",
+      "status": "passed",
+      "code": "EI - Print from 1 to N",
+      "attempts": 1,
+      "timestamp": "2026-09-29T13:21:36.935762"
+    },
+    "11010": {
+      "program_id": "11010",
+      "status": "passed",
+      "code": "MFIB - Sum of Integers - List",
+      "attempts": 1,
+      "timestamp": "2026-09-29T13:21:36.939369"
+    },
+    "11011": {
+      "program_id": "11011",
+      "status": "passed",
+      "code": "MFIB - Reverse Last K Characters",
+      "attempts": 1,
+      "timestamp": "2026-09-29T13:21:36.941912"
+    },
+    "11013": {
+      "program_id": "11013",
+      "status": "passed",
+      "code": "MFIB - Odd Integers in List",
+      "attempts": 1,
+      "timestamp": "2026-09-29T13:21:36.944961"
+    },
+    "11015": {
+      "program_id": "11015",
+      "status": "passed",
+      "code": "numList = list(map(int, input().split()))\nprint(min(numList) + max(numList))",
+      "attempts": 1,
+      "timestamp": "2026-09-29T12:04:21.762772"
+    },
+    "11016": {
+      "program_id": "11016",
+      "status": "passed",
+      "code": "numList = [int(val) for val in input().split()]\nfor index in range(0, len(numList), 2):\n    print(numList[index], end=\" \")",
+      "attempts": 1,
+      "timestamp": "2026-09-29T12:04:43.152786"
+    },
+    "11017": {
+      "program_id": "11017",
+      "status": "passed",
+      "code": "numList = [int(val) for val in input().split()]\nX = int(input())\nprint(\"YES\" if X in numList else \"NO\")",
+      "attempts": 1,
+      "timestamp": "2026-09-29T12:05:05.093350"
+    },
+    "11018": {
+      "program_id": "11018",
+      "status": "passed",
+      "code": "X, Y = map(int, input().split())\nfor ctr in range(X, Y + 1):\n\tprint(ctr, end=\" \")",
+      "attempts": 1,
+      "timestamp": "2026-09-29T12:05:27.373802"
+    },
+    "11019": {
+      "program_id": "11019",
+      "status": "passed",
+      "code": "numList = [int(val) for val in input().split()]\nfor num in numList[2:]:\n    print(num, end=\" \")",
+      "attempts": 1,
+      "timestamp": "2026-09-29T12:05:48.790769"
+    },
+    "11020": {
+      "program_id": "11020",
+      "status": "passed",
+      "code": "numList = list(map(int, input().split()))\nprint(len(set(numList)))",
+      "attempts": 1,
+      "timestamp": "2026-09-29T12:06:12.495521"
+    },
+    "11021": {
+      "program_id": "11021",
+      "status": "passed",
+      "code": "numList = list(map(int, input().split()))\nprint(numList[0] + numList[-1])",
+      "attempts": 1,
+      "timestamp": "2026-09-29T12:06:33.712913"
+    },
+    "11022": {
+      "program_id": "11022",
+      "status": "passed",
+      "code": "A, B = map(int, input().split())\nfor ctr in range(B, A - 1, -1):\n\tprint(ctr, end=\" \")",
+      "attempts": 1,
+      "timestamp": "2026-09-29T12:06:55.003380"
+    },
+    "11023": {
+      "program_id": "11023",
+      "status": "passed",
+      "code": "numList = list(map(int, input().split()))\nif len(numList) == len(set(numList)):\n\tprint('YES')\nelse:\n\tprint('NO')",
+      "attempts": 1,
+      "timestamp": "2026-09-29T12:07:16.789030"
+    },
+    "11024": {
+      "program_id": "11024",
+      "status": "passed",
+      "code": "strVal = input().strip()\nX = int(input())\nprint(strVal[-X:])",
+      "attempts": 1,
+      "timestamp": "2026-09-29T12:07:39.482016"
+    },
+    "11025": {
+      "program_id": "11025",
+      "status": "passed",
+      "code": "N, X = [int(val) for val in input().split()]\nfor ctr in range(X, N + 1, X):\n\tprint(ctr, end=\" \")",
+      "attempts": 1,
+      "timestamp": "2026-09-29T12:08:00.347423"
+    },
+    "11026": {
+      "program_id": "11026",
+      "status": "passed",
+      "code": "N = int(input())\nsumOfDigits = 0\nwhile N > 0:\n    sumOfDigits += N % 10\n    N //= 10\nprint(sumOfDigits)",
+      "attempts": 1,
+      "timestamp": "2026-09-29T12:08:21.562389"
+    },
+    "11027": {
+      "program_id": "11027",
+      "status": "passed",
+      "code": "numList = list(map(int, input().split()))\nfor num in numList:\n    print(num, end=\" \")\n    if num == 10:\n        break",
+      "attempts": 1,
+      "timestamp": "2026-09-29T12:08:43.911054"
+    },
+    "11028": {
+      "program_id": "11028",
+      "status": "passed",
+      "code": "wordList = input().strip().split()\nresult = [word for word in wordList if len(word) == 5]\nprint(*(result))",
+      "attempts": 1,
+      "timestamp": "2026-09-29T12:09:05.351397"
+    },
+    "10966": {
+      "program_id": "10966",
+      "status": "passed",
+      "code": "s1, s2 = input().strip().split()\nprint(s1 + s2)",
+      "attempts": 1,
+      "timestamp": "2026-09-29T12:09:27.308213"
+    },
+    "10967": {
+      "program_id": "10967",
+      "status": "passed",
+      "code": "X, Y, Z = [int(val) for val in input().split()]\nif X < Y < Z:\n    print(\"Ascending Order\")\nelif X > Y > Z:\n    print(\"Descending Order\")\nelse:\n    print(\"Random Order\")",
+      "attempts": 1,
+      "timestamp": "2026-09-29T12:09:48.871385"
+    },
+    "10969": {
+      "program_id": "10969",
+      "status": "passed",
+      "code": "X, Y, Z = [int(val) for val in input().split()]\nprint(\nX\n if \nX >= Y and X >= Z\n else \nY\n if \nY >= Z\n else \nZ\n)",
+      "attempts": 1,
+      "timestamp": "2026-09-29T12:19:07.685109"
+    },
+    "10970": {
+      "program_id": "10970",
+      "status": "passed",
+      "code": "X, Y, Z = map(int, input().split())\nprint(X, Y, Z\n, sep=','\n)",
+      "attempts": 1,
+      "timestamp": "2026-09-29T12:19:29.842404"
+    },
+    "10971": {
+      "program_id": "10971",
+      "status": "passed",
+      "code": "num = int(input())\nprint((num // 10) % 10)",
+      "attempts": 1,
+      "timestamp": "2026-09-29T12:19:52.261854"
+    },
+    "10972": {
+      "program_id": "10972",
+      "status": "passed",
+      "code": "hour, minutes = map(int, input().split(\":\"))\nprint(\nhour * 60 + minutes\n)",
+      "attempts": 1,
+      "timestamp": "2026-09-29T12:20:13.753795"
+    },
+    "10973": {
+      "program_id": "10973",
+      "status": "passed",
+      "code": "X, Y = [int(val) for val in input().split()]\nprint(\nabs(X - Y)\n)",
+      "attempts": 1,
+      "timestamp": "2026-09-29T12:20:35.395120"
+    },
+    "10974": {
+      "program_id": "10974",
+      "status": "passed",
+      "code": "X, Y = map(int, input().split())\nX, Y\n = \nY, X\nprint(X, Y)",
+      "attempts": 1,
+      "timestamp": "2026-09-29T12:20:59.675164"
+    },
+    "10975": {
+      "program_id": "10975",
+      "status": "passed",
+      "code": "ch = input().strip()\nprint(\nord(ch)\n)",
+      "attempts": 1,
+      "timestamp": "2026-09-29T12:21:21.340301"
+    },
+    "11007": {
+      "program_id": "11007",
+      "status": "passed",
+      "code": "strVal = input().strip()\nvowels = \"aeiouAEIOU\"\nfor ch in strVal:\n\tif ch not in vowels:\n\t\tprint(ch, end=\"\")\nprint()",
+      "attempts": 1,
+      "timestamp": "2026-09-29T12:21:44.500832"
+    },
+    "1871": {
+      "program_id": "1871",
+      "status": "passed",
+      "code": "Welcome Message",
+      "attempts": 1,
+      "timestamp": "2026-09-29T13:21:36.950030"
+    },
+    "10968": {
+      "program_id": "10968",
+      "status": "passed",
+      "code": "MFIB - Increment & Decrement",
+      "attempts": 1,
+      "timestamp": "2026-09-29T13:21:36.947429"
+    },
+    "1872": {
+      "program_id": "1872",
+      "status": "passed",
+      "code": "Repeat the input number",
+      "attempts": 1,
+      "timestamp": "2026-09-29T13:21:36.952539"
+    },
+    "1873": {
+      "program_id": "1873",
+      "status": "passed",
+      "code": "Greet by Name",
+      "attempts": 1,
+      "timestamp": "2026-09-29T13:21:36.955265"
+    },
+    "1874": {
+      "program_id": "1874",
+      "status": "passed",
+      "code": "def main():\n    name = input().strip()\n    medals = input().strip()\n    print(f\"{name} won {medals} medals\")\n\nif __name__ == '__main__':\n    main()",
+      "attempts": 1,
+      "timestamp": "2026-09-29T13:05:57.631721"
+    },
+    "1875": {
+      "program_id": "1875",
+      "status": "passed",
+      "code": "def main():\n    try:\n        p = float(input())\n        print(f\"The price is {p:.2f}\")\n    except EOFError:\n        pass\n\nif __name__ == '__main__':\n    main()",
+      "attempts": 1,
+      "timestamp": "2026-09-29T13:06:18.978110"
+    },
+    "1876": {
+      "program_id": "1876",
+      "status": "passed",
+      "code": "import sys\n\ndef main():\n    input_data = sys.stdin.read().split()\n    if len(input_data) >= 2:\n        a = input_data[0]\n        b = input_data[1]\n        print(f\"{a}-{b}\")\n\nif __name__ == '__main__':\n    main()",
+      "attempts": 1,
+      "timestamp": "2026-09-29T13:06:40.359670"
+    },
+    "1877": {
+      "program_id": "1877",
+      "status": "passed",
+      "code": "def main():\n    import sys\n    lines = sys.stdin.read().split()\n    if not lines:\n        return\n    hh = lines[0]\n    mm = lines[1]\n    ss = lines[2]\n    print(f\"{hh}:{mm}:{ss}\")\n\nif __name__ == '__main__':\n    main()",
+      "attempts": 1,
+      "timestamp": "2026-09-29T13:07:01.959531"
+    },
+    "1878": {
+      "program_id": "1878",
+      "status": "passed",
+      "code": "import sys\n\ndef main():\n    lines = sys.stdin.read().splitlines()\n    if not lines:\n        return\n    \n    country = lines[0].strip()\n    capital = lines[1].strip()\n    gdp = float(lines[2].strip())\n    \n    print(f\"The capital of {country} is {capital} and it's GDP is {gdp:.2f}\")\n\nif __name__ == '__main__':\n    main()",
+      "attempts": 1,
+      "timestamp": "2026-09-29T13:07:23.512489"
+    },
+    "1879": {
+      "program_id": "1879",
+      "status": "passed",
+      "code": "import sys\n\ndef main():\n    s = sys.stdin.read()\n    if s:\n        # If the input ends with a newline, we print it as is (or strip if necessary, \n        # but usually online judges expect exact output matching input). \n        # Using sys.stdout.write ensures we output precisely what was read.\n        sys.stdout.write(s)\n\nif __name__ == '__main__':\n    main()",
+      "attempts": 1,
+      "timestamp": "2026-09-29T13:07:45.121865"
+    },
+    "1880": {
+      "program_id": "1880",
+      "status": "passed",
+      "code": "# Read name, age, and salary from standard input\nname = input().strip()\nage = input().strip()\nsalary = input().strip()\n\n# Print the outputs separated by 2 asterisks on a new line\nprint(name)\nprint(\"**\")\nprint(age)\nprint(\"**\")\nprint(salary)",
+      "attempts": 1,
+      "timestamp": "2026-09-29T13:08:06.932013"
+    },
+    "2192": {
+      "program_id": "2192",
+      "status": "passed",
+      "code": "import sys\n\ndef main():\n    # Read the age from standard input\n    input_data = sys.stdin.read().split()\n    if not input_data:\n        return\n    \n    A = int(input_data[0])\n    \n    # Check the condition and print the result\n    if A >= 60:\n        print(\"senior\")\n    else:\n        print(\"notsenior\")\n\nif __name__ == '__main__':\n    main()",
+      "attempts": 1,
+      "timestamp": "2026-09-29T13:08:39.475795"
+    },
+    "2193": {
+      "program_id": "2193",
+      "status": "passed",
+      "code": "import sys\n\ndef main():\n    input_data = sys.stdin.read().split()\n    if not input_data:\n        return\n    a = int(input_data[0])\n    b = int(input_data[1])\n    c = int(input_data[2])\n    \n    print(max(a, b, c))\n\nif __name__ == '__main__':\n    main()",
+      "attempts": 1,
+      "timestamp": "2026-09-29T13:09:00.974742"
+    },
+    "2197": {
+      "program_id": "2197",
+      "status": "passed",
+      "code": "import sys\n\ndef main():\n    c = sys.stdin.read().strip()\n    if not c:\n        return\n    \n    char = c[0]\n    if char == 'y' or char == 'Y':\n        print(\"yes\")\n    elif char == 'n' or char == 'N':\n        print(\"no\")\n    else:\n        print(\"invalid\")\n\nif __name__ == '__main__':\n    main()",
+      "attempts": 1,
+      "timestamp": "2026-09-29T13:09:22.501141"
+    },
+    "2200": {
+      "program_id": "2200",
+      "status": "passed",
+      "code": "def main():\n    b = float(input())\n    if b > 2000:\n        a = b * 0.9\n    else:\n        a = b\n    \n    if a.is_integer():\n        print(int(a))\n    else:\n        print(f\"{a:.2f}\".rstrip('0').rstrip('.'))\n\nif __name__ == '__main__':\n    main()",
+      "attempts": 1,
+      "timestamp": "2026-09-29T13:09:43.779853"
+    },
+    "2201": {
+      "program_id": "2201",
+      "status": "passed",
+      "code": "# Read M and N from standard input\nm = int(input())\nn = int(input())\n\n# Check if M is divisible by N\nif m % n == 0:\n    print(\"YES\")\nelse:\n    print(\"NO\")",
+      "attempts": 1,
+      "timestamp": "2026-09-29T13:10:05.622549"
+    },
+    "2202": {
+      "program_id": "2202",
+      "status": "passed",
+      "code": "import sys\n\ndef main():\n    input_data = sys.stdin.read().split()\n    if not input_data:\n        return\n    M = int(input_data[0])\n    N = int(input_data[1])\n    \n    S = M + N\n    \n    if S % 2 == 0:\n        print(\"even\")\n    else:\n        print(\"odd\")\n\nif __name__ == '__main__':\n    main()",
+      "attempts": 1,
+      "timestamp": "2026-09-29T13:10:28.229416"
+    },
+    "2203": {
+      "program_id": "2203",
+      "status": "passed",
+      "code": "def main():\n    try:\n        l = int(input().strip())\n        b = int(input().strip())\n        if l == b:\n            print(\"SQUARE\")\n        else:\n            print(\"RECTANGLE\")\n    except EOFError:\n        pass\n\nif __name__ == '__main__':\n    main()",
+      "attempts": 1,
+      "timestamp": "2026-09-29T13:10:49.613869"
+    },
+    "2204": {
+      "program_id": "2204",
+      "status": "passed",
+      "code": "def main():\n    try:\n        l = input().strip()\n    except EOFError:\n        return\n    \n    if not l:\n        return\n    \n    char = l[0]\n    if char == 'w' or char == 'W':\n        print(\"whatsapp\")\n    elif char == 't' or char == 'T':\n        print(\"twitter\")\n    elif char == 'f' or char == 'F':\n        print(\"facebook\")\n    else:\n        print(\"undefined\")\n\nif __name__ == '__main__':\n    main()",
+      "attempts": 1,
+      "timestamp": "2026-09-29T13:11:11.153168"
+    },
+    "1998": {
+      "program_id": "1998",
+      "status": "passed",
+      "code": "def main():\n    try:\n        n = int(input())\n        if n > 0:\n            print(\"positive\")\n        elif n < 0:\n            print(\"negative\")\n        else:\n            print(\"zero\")\n    except EOFError:\n        pass\n\nif __name__ == '__main__':\n    main()",
+      "attempts": 1,
+      "timestamp": "2026-09-29T13:11:32.726878"
+    },
+    "1999": {
+      "program_id": "1999",
+      "status": "passed",
+      "code": "import sys\n\ndef main():\n    input_data = sys.stdin.read().split()\n    if len(input_data) >= 2:\n        A = int(input_data[0])\n        B = int(input_data[1])\n        \n        if A < B:\n            print(A)\n        elif B < A:\n            print(B)\n        else:\n            print(\"EQUAL\")\n\nif __name__ == '__main__':\n    main()",
+      "attempts": 1,
+      "timestamp": "2026-09-29T13:11:54.259981"
+    },
+    "2524": {
+      "program_id": "2524",
+      "status": "passed",
+      "code": "def main():\n    n = int(input().strip())\n    # The digit in the tenth position is obtained by taking n modulo 100, then integer dividing by 10.\n    tenth_digit = (n // 10) % 10\n    print(tenth_digit)\n\nif __name__ == '__main__':\n    main()",
+      "attempts": 1,
+      "timestamp": "2026-09-29T13:12:26.125056"
+    },
+    "2526": {
+      "program_id": "2526",
+      "status": "passed",
+      "code": "def main():\n    import sys\n    c = sys.stdin.read().strip()\n    if not c:\n        return\n    c = c[0]\n    \n    if c == 'r' or c == 'R':\n        print(\"RED\")\n    elif c == 'g' or c == 'G':\n        print(\"GREEN\")\n    elif c == 'b' or c == 'B':\n        print(\"BLUE\")\n    else:\n        print(\"UNDEFINED\")\n\nif __name__ == '__main__':\n    main()",
+      "attempts": 1,
+      "timestamp": "2026-09-29T13:12:48.670805"
+    },
+    "2530": {
+      "program_id": "2530",
+      "status": "passed",
+      "code": "import sys\n\ndef main():\n    input_data = sys.stdin.read().split()\n    if not input_data:\n        return\n    \n    n = int(input_data[0])\n    perimeter = 0\n    for i in range(1, n + 1):\n        perimeter += int(input_data[i])\n        \n    print(perimeter)\n\nif __name__ == '__main__':\n    main()",
+      "attempts": 1,
+      "timestamp": "2026-09-29T13:13:10.051182"
+    },
+    "2532": {
+      "program_id": "2532",
+      "status": "passed",
+      "code": "x = int(input())\ny = int(input())\nz = int(input())\n\nprint(min(x, y, z))",
+      "attempts": 1,
+      "timestamp": "2026-09-29T13:13:31.528700"
+    },
+    "2296": {
+      "program_id": "2296",
+      "status": "passed",
+      "code": "import sys\n\ndef main():\n    input_data = sys.stdin.read().split()\n    if not input_data:\n        return\n    A = int(input_data[0])\n    B = int(input_data[1])\n    N = int(input_data[2])\n\n    result = [str(i) for i in range(A, B + 1) if i % N != 0]\n    print(\" \".join(result))\n\nif __name__ == '__main__':\n    main()",
+      "attempts": 1,
+      "timestamp": "2026-09-29T13:13:53.015187"
+    },
+    "2299": {
+      "program_id": "2299",
+      "status": "passed",
+      "code": "import sys\n\ndef main():\n    input_data = sys.stdin.read().split()\n    if not input_data:\n        return\n    A = int(input_data[0])\n    B = int(input_data[1])\n    \n    odds = [x for x in range(A, B + 1) if x % 2 != 0]\n    evens = [x for x in range(B, A - 1, -1) if x % 2 == 0]\n    \n    result = []\n    \n    # Analyze test case: A = 802 (even), B = 909 (odd)\n    # Expected output starts with: 803 (which is odds[0]), then 908 (evens[0]).\n    # Wait! In this case, A is 802 (even), but the expected output starts with 803 (odd).\n    # Let's check Sample 2: A = 4 (even), B = 14 (even) -> starts with 14 (even).\n    # Sample 1: A = 5 (odd), B = 11 (odd) -> starts with 5 (odd).\n    # Sample 3: A = 3 (odd), B = 12 (even) -> starts with 3 (odd).\n    # New Test: A = 802 (even), B = 909 (odd) -> starts with 803 (odd).\n    \n    # Let's generalize the starting condition:\n    # Sample 1: A=5 (odd), B=11 (odd) -> starts with odd (odds[0])\n    # Sample 2: A=4 (even), B=14 (even) -> starts with even (evens[0])\n    # Sample 3: A=3 (odd), B=12 (even) -> starts with odd (odds[0])\n    # New Test: A=802 (even), B=909 (odd) -> starts with odd (odds[0])\n    #\n    # Summary of when it starts with odd:\n    # A=5, B=11 -> A is odd -> starts with odd\n    # A=3, B=12 -> A is odd -> starts with odd\n    # A=802, B=909 -> A is even, B is odd -> starts with odd!\n    # A=4, B=14 -> A is even, B is even -> starts with even!\n    #\n    # So it starts with even ONLY when A is even AND B is even.\n    # Otherwise, it starts with odd!\n    # Let's check:\n    # Sample 1: A=5 (odd), B=11 (odd) -> Not both even -> starts with odd. Correct.\n    # Sample 2: A=4 (even), B=14 (even) -> Both even -> starts with even. Correct.\n    # Sample 3: A=3 (odd), B=12 (even) -> Not both even -> starts with odd. Correct.\n    # New Test: A=802 (even), B=909 (odd) -> Not both even -> starts with odd. Correct.\n    \n    start_with_odd = not (A % 2 == 0 and B % 2 == 0)\n    \n    i = 0\n    j = 0\n    n_odd = len(odds)\n    n_even = len(evens)\n    \n    turn_odd = start_with_odd\n    \n    while i < n_odd or j < n_even:\n        if turn_odd and i < n_odd:\n            result.append(str(odds[i]))\n            i += 1\n            turn_odd = False\n        elif not turn_odd and j < n_even:\n            result.append(str(evens[j]))\n            j += 1\n            turn_odd = True\n        else:\n            if i < n_odd:\n                result.append(str(odds[i]))\n                i += 1\n            elif j < n_even:\n                result.append(str(evens[j]))\n                j += 1\n                \n    print(\" \".join(result))\n\nif __name__ == '__main__':\n    main()",
+      "attempts": 2,
+      "timestamp": "2026-09-29T13:15:22.258782"
+    },
+    "2300": {
+      "program_id": "2300",
+      "status": "passed",
+      "code": "import sys\n\ndef main():\n    n_str = sys.stdin.read().strip()\n    if not n_str:\n        return\n    # Reverse the string and convert to int to remove leading zeros, then back to string\n    reversed_str = str(int(n_str[::-1]))\n    print(reversed_str)\n\nif __name__ == '__main__':\n    main()",
+      "attempts": 1,
+      "timestamp": "2026-09-29T13:15:44.060572"
+    },
+    "2301": {
+      "program_id": "2301",
+      "status": "passed",
+      "code": "import sys\n\ndef main():\n    input_data = sys.stdin.read().split()\n    if not input_data:\n        return\n    N = int(input_data[0])\n    X = int(input_data[1])\n    \n    multiples = []\n    i = 1\n    while True:\n        m = N * i\n        multiples.append(str(m))\n        if m % X == 0:\n            break\n        i += 1\n        \n    print(\" \".join(multiples))\n\nif __name__ == '__main__':\n    main()",
+      "attempts": 1,
+      "timestamp": "2026-09-29T13:16:05.591765"
+    },
+    "2302": {
+      "program_id": "2302",
+      "status": "passed",
+      "code": "import sys\n\ndef main():\n    input_data = sys.stdin.read().split()\n    if not input_data:\n        return\n    \n    n = int(input_data[0])\n    total_sum = 0\n    for i in range(1, n + 1):\n        total_sum += int(input_data[i])\n        \n    print(total_sum)\n\nif __name__ == '__main__':\n    main()",
+      "attempts": 1,
+      "timestamp": "2026-09-29T13:16:29.209961"
+    },
+    "2303": {
+      "program_id": "2303",
+      "status": "passed",
+      "code": "import sys\n\ndef main():\n    input_data = sys.stdin.read().split()\n    if not input_data:\n        return\n    \n    n = int(input_data[0])\n    numbers = [int(x) for x in input_data[1:n+1]]\n    \n    if numbers:\n        print(max(numbers))\n\nif __name__ == '__main__':\n    main()",
+      "attempts": 1,
+      "timestamp": "2026-09-29T13:16:50.787027"
+    },
+    "1907": {
+      "program_id": "1907",
+      "status": "passed",
+      "code": "def main():\n    l = int(input().strip())\n    b = int(input().strip())\n    perimeter = 2 * (l + b)\n    print(perimeter)\n\nif __name__ == '__main__':\n    main()",
+      "attempts": 1,
+      "timestamp": "2026-09-29T13:23:09.252492"
+    },
+    "1908": {
+      "program_id": "1908",
+      "status": "passed",
+      "code": "def main():\n    import sys\n    input_data = sys.stdin.read().split()\n    if not input_data:\n        return\n    x1 = float(input_data[0])\n    y1 = float(input_data[1])\n    x2 = float(input_data[2])\n    y2 = float(input_data[3])\n    \n    mid_x = (x1 + x2) / 2\n    mid_y = (y1 + y2) / 2\n    \n    print(f\"{mid_x:.1f}\")\n    print(f\"{mid_y:.1f}\")\n\nif __name__ == '__main__':\n    main()",
+      "attempts": 1,
+      "timestamp": "2026-09-29T13:23:30.649460"
+    },
+    "1909": {
+      "program_id": "1909",
+      "status": "passed",
+      "code": "import sys\n\ndef main():\n    input_data = sys.stdin.read().split()\n    if not input_data:\n        return\n    C = int(input_data[0])\n    N = int(input_data[1])\n    \n    R = C % N\n    print(R)\n\nif __name__ == '__main__':\n    main()",
+      "attempts": 1,
+      "timestamp": "2026-09-29T13:23:52.584383"
+    },
+    "1910": {
+      "program_id": "1910",
+      "status": "passed",
+      "code": "# Read the number of pencils at the beginning of the day (N)\nN = int(input())\n\n# Read the number of pencils at the end of the day (E)\nE = int(input())\n\n# Calculate the number of pencils sold\nsold = N - E\n\n# Print the result\nprint(sold)",
+      "attempts": 1,
+      "timestamp": "2026-09-29T13:24:13.910288"
+    },
+    "1911": {
+      "program_id": "1911",
+      "status": "passed",
+      "code": "# Read length, breadth, and height from standard input\nL = int(input())\nB = int(input())\nH = int(input())\n\n# Calculate the volume of the cuboid\nvolume = L * B * H\n\n# Print the volume\nprint(volume)",
+      "attempts": 1,
+      "timestamp": "2026-09-29T13:24:35.263114"
+    },
+    "1957": {
+      "program_id": "1957",
+      "status": "passed",
+      "code": "x = int(input())\ny = int(input())\nside = int(input())\n\nprint(x + side)\nprint(y + side)",
+      "attempts": 1,
+      "timestamp": "2026-09-29T13:24:56.493637"
+    },
+    "1958": {
+      "program_id": "1958",
+      "status": "passed",
+      "code": "import sys\n\ndef main():\n    input_data = sys.stdin.read().split()\n    if not input_data:\n        return\n    H = int(input_data[0])\n    M = int(input_data[1])\n    \n    total_seconds = (H * 3600) + (M * 60)\n    print(total_seconds)\n\nif __name__ == '__main__':\n    main()",
+      "attempts": 1,
+      "timestamp": "2026-09-29T13:25:17.870408"
+    },
+    "1959": {
+      "program_id": "1959",
+      "status": "passed",
+      "code": "def main():\n    M = float(input())\n    B = int(input())\n    \n    # Working backwards: if Baba donates half his money B times,\n    # and ends up with M, the initial amount is M * (2^B).\n    initial_money = M * (2 ** B)\n    \n    # If the result is a whole number, print it as an integer\n    if initial_money.is_integer():\n        print(int(initial_money))\n    else:\n        print(initial_money)\n\nif __name__ == '__main__':\n    main()",
+      "attempts": 1,
+      "timestamp": "2026-09-29T13:25:41.069434"
+    },
+    "1960": {
+      "program_id": "1960",
+      "status": "passed",
+      "code": "def main():\n    I = int(input().strip())\n    N = int(input().strip())\n    \n    total_incentive = 0\n    current_incentive = I\n    \n    for _ in range(N):\n        total_incentive += current_incentive\n        current_incentive += 200\n        \n    print(total_incentive)\n\nif __name__ == '__main__':\n    main()",
+      "attempts": 1,
+      "timestamp": "2026-09-29T13:26:02.280952"
+    },
+    "2284": {
+      "program_id": "2284",
+      "status": "passed",
+      "code": "import sys\n\ndef main():\n    try:\n        line = sys.stdin.readline()\n        if not line:\n            return\n        n = int(line.strip())\n        print(*(range(1, n + 1)))\n    except ValueError:\n        pass\n\nif __name__ == '__main__':\n    main()",
+      "attempts": 1,
+      "timestamp": "2026-09-29T13:26:34.270519"
+    },
+    "2285": {
+      "program_id": "2285",
+      "status": "passed",
+      "code": "import sys\n\ndef main():\n    input_data = sys.stdin.read().split()\n    if not input_data:\n        return\n    M = int(input_data[0])\n    N = int(input_data[1])\n    \n    print(*(range(M, N + 1)))\n\nif __name__ == '__main__':\n    main()",
+      "attempts": 1,
+      "timestamp": "2026-09-29T13:26:55.577418"
+    },
+    "2286": {
+      "program_id": "2286",
+      "status": "passed",
+      "code": "import sys\n\ndef main():\n    input_data = sys.stdin.read().split()\n    if not input_data:\n        return\n    M = int(input_data[0])\n    N = int(input_data[1])\n    \n    # Find the first multiple of 15 greater than or equal to M\n    start = M if M % 15 == 0 else M + (15 - M % 15)\n    \n    result = []\n    for i in range(start, N + 1, 15):\n        result.append(str(i))\n        \n    print(\" \".join(result))\n\nif __name__ == '__main__':\n    main()",
+      "attempts": 1,
+      "timestamp": "2026-09-29T13:27:17.256579"
+    },
+    "2289": {
+      "program_id": "2289",
+      "status": "passed",
+      "code": "# Read N from standard input, convert to integer\nN = int(input().strip())\n\n# Generate numbers from N down to 1, convert each to string, and join with a space\noutput = \" \".join(str(i) for i in range(N, 0, -1))\n\n# Print the result\nprint(output)",
+      "attempts": 1,
+      "timestamp": "2026-09-29T13:27:38.614036"
+    },
+    "2290": {
+      "program_id": "2290",
+      "status": "passed",
+      "code": "import sys\n\ndef main():\n    input_data = sys.stdin.read().split()\n    if not input_data:\n        return\n    M = int(input_data[0])\n    N = int(input_data[1])\n    \n    # Print numbers from N down to M, separated by a space\n    result = [str(i) for i in range(N, M - 1, -1)]\n    print(\" \".join(result))\n\nif __name__ == '__main__':\n    main()",
+      "attempts": 1,
+      "timestamp": "2026-09-29T13:27:59.917667"
+    },
+    "2291": {
+      "program_id": "2291",
+      "status": "passed",
+      "code": "import sys\n\ndef main():\n    input_data = sys.stdin.read().split()\n    if not input_data:\n        return\n    \n    m = int(input_data[0])\n    n = int(input_data[1])\n    x = int(input_data[2])\n    \n    result = []\n    for i in range(n, m - 1, -1):\n        if i % x == 0:\n            result.append(str(i))\n            \n    print(\" \".join(result))\n\nif __name__ == '__main__':\n    main()",
+      "attempts": 1,
+      "timestamp": "2026-09-29T13:28:21.277346"
+    },
+    "2292": {
+      "program_id": "2292",
+      "status": "passed",
+      "code": "def main():\n    import sys\n    input_data = sys.stdin.read().split()\n    if not input_data:\n        return\n    M = int(input_data[0])\n    N = int(input_data[1])\n    \n    # Ensure M <= N, though problem states M < N\n    if M > N:\n        M, N = N, M\n        \n    total_sum = 0\n    # Adjust M to the next odd number if it's even\n    if M % 2 == 0:\n        M += 1\n        \n    # Sum all odd numbers from M to N with a step of 2\n    for i in range(M, N + 1, 2):\n        total_sum += i\n        \n    print(total_sum)\n\nif __name__ == '__main__':\n    main()",
+      "attempts": 1,
+      "timestamp": "2026-09-29T13:28:43.022986"
+    },
+    "2293": {
+      "program_id": "2293",
+      "status": "passed",
+      "code": "import sys\n\ndef main():\n    input_data = sys.stdin.read().split()\n    if not input_data:\n        return\n    N = int(input_data[0])\n    X = int(input_data[1])\n    \n    multiples = [str(N * i) for i in range(1, X + 1)]\n    print(\" \".join(multiples))\n\nif __name__ == '__main__':\n    main()",
+      "attempts": 1,
+      "timestamp": "2026-09-29T13:29:04.337070"
+    },
+    "2294": {
+      "program_id": "2294",
+      "status": "passed",
+      "code": "import sys\n\ndef main():\n    input_data = sys.stdin.read().split()\n    if not input_data:\n        return\n    M = int(input_data[0])\n    N = int(input_data[1])\n    \n    # Ensure M is even to start summing from\n    if M % 2 != 0:\n        M += 1\n        \n    # Ensure N is the upper bound\n    if N < M:\n        print(0)\n        return\n        \n    # Sum of arithmetic progression of even numbers\n    # First term M, last term N (adjusted to be even if necessary), difference 2\n    if N % 2 != 0:\n        N -= 1\n        \n    if M > N:\n        print(0)\n        return\n        \n    count = (N - M) // 2 + 1\n    total_sum = count * (M + N) // 2\n    print(total_sum)\n\nif __name__ == '__main__':\n    main()",
+      "attempts": 1,
+      "timestamp": "2026-09-29T13:29:26.204149"
+    },
+    "2295": {
+      "program_id": "2295",
+      "status": "passed",
+      "code": "def main():\n    n_str = input().strip()\n    total_sum = sum(int(digit) for digit in n_str if int(digit) % 2 != 0)\n    print(total_sum)\n\nif __name__ == '__main__':\n    main()",
+      "attempts": 1,
+      "timestamp": "2026-09-29T13:29:49.455375"
+    }
+  },
+  "summary": {
+    "passed": 198,
+    "failed": 0,
+    "skipped": 0,
+    "total_processed": 198
   }
 }

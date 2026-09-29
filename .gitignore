@@ -1,0 +1,17 @@
+.env
+venv/
+failures/
+debug/
+storage_state.json
+screenshots/
+logs/
+__pycache__/
+*.pyc
+*.png
+scratch/
+output.txt
+page_dump.html
+panel_dump.json
+browser_session/
+full_page_rendered.html
+*_info.json

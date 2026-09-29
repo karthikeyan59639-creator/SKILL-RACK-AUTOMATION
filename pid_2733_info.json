@@ -1,6 +1,0 @@
-{
-  "pid": "2733",
-  "leftText": "Python3-H001 Basics\nReading Input - float datatype\n\n\n\nTo convert the input string to float we use the float() function. The below program will print 10.52 for the input values 4.12 and 6.40\n\nx = float(input())\ny = float(input())\nprint (x+y)\n\n\u00a0\n\nProgramID- 2733  SKILLRACK\n\nReading input - float datatype\n\n\n\nInsert the missing lines of code so that the program accepts two float values and prints their difference as the output.\n\nExamples:\n- If the input values are 5.5 and 7.5, then the output must be -2.0\n- If the input values are 5.5 and 2.5, then the output must be 3.0\n\n\u00a0\n\n\n\nMax Execution Time Limit: 5000 millisecs\nui-button\nAmbiance\nChaos\nClouds Midnight\nCobalt\nidle Fingers\nkrTheme\nMerbivore\nMerbivore Soft\nMono Industrial\nMonokai\nPastel on dark\nSolarized Dark\nTerminal\nTomorrow Night\nTomorrow Night Blue\nTomorrow Night Bright\nTomorrow Night 80s\nTwilight\nVibrant Ink\nChrome\nClouds\nCrimson Editor\nDawn\nDreamweaver\nEclipse\nGitHub\nIPlastic\nSolarized Light\nTextMate\nTomorrow\nXCode\nKuroir\nKatzenMilch\nSQL Server\n\n\nPython3 (3.12)\nPython3 (3.12)\n1\n2117250080034@rgit\n\n\n\n\n\n\nSave\n\t\nRun\n\t\n\t\t\n\n",
-  "edVal": "",
-  "suffixCode": "1\n2117250080034@rgit"
-}

@@ -1,7 +1,7 @@
 import json
 import os
 from datetime import datetime
-from config import PROGRESS_FILE, TOTAL_PROBLEMS_PER_SECTION
+from config import PROGRESS_FILE
 from logger import log_info, log_error
 
 class ProgressManager:
@@ -12,84 +12,104 @@ class ProgressManager:
     def _load(self) -> dict:
         if os.path.exists(self.filepath):
             try:
+                if os.path.getsize(self.filepath) == 0:
+                    return {"exercises": {}, "summary": {"passed": 0, "failed": 0, "skipped": 0}}
                 with open(self.filepath, "r", encoding="utf-8") as f:
-                    return json.load(f)
+                    content = json.load(f)
+                    if isinstance(content, dict):
+                        return content
             except Exception as e:
-                log_error(f"Failed to read progress file '{self.filepath}': {e}. Initializing fresh progress.")
-        return {}
+                log_error(f"[PROGRESS] Failed to read '{self.filepath}': {e}. Initializing fresh progress.")
+        return {"exercises": {}, "summary": {"passed": 0, "failed": 0, "skipped": 0}}
 
     def save(self):
         try:
             with open(self.filepath, "w", encoding="utf-8") as f:
                 json.dump(self.data, f, indent=2)
         except Exception as e:
-            log_error(f"Failed to save progress to '{self.filepath}': {e}")
+            log_error(f"[PROGRESS] Failed to save progress to '{self.filepath}': {e}")
 
-    def get_section_info(self, section: str) -> dict:
-        if section not in self.data:
-            self.data[section] = {
-                "status": "pending",
-                "completed_problems": 0,
-                "total_problems": TOTAL_PROBLEMS_PER_SECTION,
-                "problems": {}
-            }
-        return self.data[section]
+    def _ensure_exercises(self):
+        if "exercises" not in self.data:
+            self.data["exercises"] = {}
 
-    def is_problem_completed(self, section: str, problem_num: int) -> bool:
-        sec_info = self.get_section_info(section)
-        prob_key = f"problem_{problem_num:02d}"
-        if sec_info.get(prob_key) == "completed":
-            return True
-        prob_str = str(problem_num)
-        prob_data = sec_info.get("problems", {}).get(prob_str, {})
-        return prob_data.get("status") == "completed"
+    def is_passed(self, program_id: str) -> bool:
+        """Returns True if the given program_id has already been successfully solved."""
+        if not program_id:
+            return False
+        pid_str = str(program_id).strip()
+        self._ensure_exercises()
 
-    def mark_problem_status(self, section: str, problem_num: int, status: str, screenshot_path: str = None, error_msg: str = None):
-        sec_info = self.get_section_info(section)
-        sec_info["status"] = "in_progress"
-        prob_key = f"problem_{problem_num:02d}"
-        sec_info[prob_key] = status
+        # Check exercises dict
+        if pid_str in self.data["exercises"]:
+            return self.data["exercises"][pid_str].get("status") == "passed"
 
-        if problem_num + 1 <= TOTAL_PROBLEMS_PER_SECTION:
-            next_key = f"problem_{problem_num+1:02d}"
-            if next_key not in sec_info:
-                sec_info[next_key] = "pending"
+        # Check legacy section-based structure
+        for k, v in self.data.items():
+            if isinstance(v, dict) and "problems" in v:
+                for prob_k, prob_v in v["problems"].items():
+                    if str(prob_v.get("program_id")) == pid_str and prob_v.get("status") == "passed":
+                        return True
 
-        prob_str = str(problem_num)
-        now_iso = datetime.now().isoformat()
-        prob_record = {
-            "section": section,
-            "problem": problem_num,
-            "status": status,
-            "timestamp": now_iso,
-            "screenshot": screenshot_path
+        return False
+
+    def record_passed(self, program_id: str, code: str, attempts: int):
+        """Records a successfully passed exercise."""
+        pid_str = str(program_id).strip()
+        self._ensure_exercises()
+        self.data["exercises"][pid_str] = {
+            "program_id": pid_str,
+            "status": "passed",
+            "code": code,
+            "attempts": attempts,
+            "timestamp": datetime.now().isoformat()
         }
-        if error_msg:
-            prob_record["error"] = error_msg
-
-        if "problems" not in sec_info:
-            sec_info["problems"] = {}
-        sec_info["problems"][prob_str] = prob_record
-
-        completed_count = sum(
-            1 for p_num in range(1, TOTAL_PROBLEMS_PER_SECTION + 1)
-            if sec_info.get(f"problem_{p_num:02d}") == "completed" or sec_info.get("problems", {}).get(str(p_num), {}).get("status") == "completed"
-        )
-        sec_info["completed_problems"] = completed_count
-
-        if completed_count >= TOTAL_PROBLEMS_PER_SECTION:
-            sec_info["status"] = "completed"
-            log_info(f"[PROGRESS] Section {section} is 100% COMPLETED ({completed_count}/{TOTAL_PROBLEMS_PER_SECTION})!")
-
+        self._update_summary()
         self.save()
+        log_info(f"[PROGRESS] Recorded PASSED status for ProgramID-{pid_str} (Attempts: {attempts}).")
 
-    def get_resume_target(self, sections: list) -> tuple:
-        """Returns (first_incomplete_section, first_incomplete_problem_number)."""
-        for sec in sections:
-            sec_info = self.get_section_info(sec)
-            if sec_info.get("status") == "completed":
-                continue
-            for prob in range(1, TOTAL_PROBLEMS_PER_SECTION + 1):
-                if not self.is_problem_completed(sec, prob):
-                    return (sec, prob)
-        return (None, None)
+    def record_failed(self, program_id: str, code: str, attempts: int, error: str = ""):
+        """Records a failed exercise."""
+        pid_str = str(program_id).strip()
+        self._ensure_exercises()
+        self.data["exercises"][pid_str] = {
+            "program_id": pid_str,
+            "status": "failed",
+            "code": code,
+            "attempts": attempts,
+            "error": error,
+            "timestamp": datetime.now().isoformat()
+        }
+        self._update_summary()
+        self.save()
+        log_info(f"[PROGRESS] Recorded FAILED status for ProgramID-{pid_str}.")
+
+    def record_skipped(self, program_id: str, reason: str = ""):
+        """Records a skipped exercise."""
+        pid_str = str(program_id).strip()
+        self._ensure_exercises()
+        self.data["exercises"][pid_str] = {
+            "program_id": pid_str,
+            "status": "skipped",
+            "reason": reason,
+            "timestamp": datetime.now().isoformat()
+        }
+        self._update_summary()
+        self.save()
+        log_info(f"[PROGRESS] Recorded SKIPPED status for ProgramID-{pid_str}.")
+
+    def _update_summary(self):
+        self._ensure_exercises()
+        passed = sum(1 for v in self.data["exercises"].values() if v.get("status") == "passed")
+        failed = sum(1 for v in self.data["exercises"].values() if v.get("status") == "failed")
+        skipped = sum(1 for v in self.data["exercises"].values() if v.get("status") == "skipped")
+        self.data["summary"] = {
+            "passed": passed,
+            "failed": failed,
+            "skipped": skipped,
+            "total_processed": len(self.data["exercises"])
+        }
+
+    def get_summary(self) -> dict:
+        self._update_summary()
+        return self.data.get("summary", {"passed": 0, "failed": 0, "skipped": 0})
