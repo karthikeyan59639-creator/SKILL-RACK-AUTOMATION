@@ -2,6 +2,7 @@ import os
 import json
 import time
 import random
+from auth import verify_project_access
 from config import (
     HEADLESS, MAX_ATTEMPTS, ACTION_DELAY_MS,
     FAILURES_DIR, SCREENSHOTS_DIR, DEBUG_DIR
@@ -171,6 +172,7 @@ def run_orchestrator(headless: bool = HEADLESS):
        - Stale-state guard asserts pid != prev_pid.
     4. Print summary report (passed, failed, skipped with program IDs).
     """
+    verify_project_access()
     log_info("\n" + "=" * 60)
     log_info(f">>> SKILLRACK AUTONOMOUS CODE TUTOR ORCHESTRATOR (headless={headless}) <<<")
     log_info("=" * 60 + "\n")
@@ -456,4 +458,5 @@ def run_orchestrator(headless: bool = HEADLESS):
 
 
 if __name__ == "__main__":
+    verify_project_access()
     run_orchestrator()

@@ -9,6 +9,7 @@ import json
 import time
 import base64
 from logger import log_info, log_warning, log_error
+from auth import verify_project_access
 from config import CLOSE_BROWSER_ON_FINISH
 from skill_automation.browser_manager import BrowserManager, solve_captcha_image
 from problem_scraper import scrape_problem
@@ -515,6 +516,7 @@ def run_track(page, bm, pm: ProgressManager, track_btn_id: str, track_name: str)
 
 
 def main():
+    verify_project_access()
     log_info("\n" + "=" * 60)
     log_info("  SKILLRACK MULTI-TRACK RUNNER INITIALIZATION")
     log_info("  Track: PYTHON3.x - 50 EASY CHALLENGES (50 Challenges)")
@@ -561,4 +563,5 @@ def main():
 
 
 if __name__ == "__main__":
+    verify_project_access()
     main()

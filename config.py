@@ -1,10 +1,16 @@
 import os
+import sys
 from dotenv import load_dotenv
 
 # Call load_dotenv() before any environment variables are read
 load_dotenv()
 
 PROJECT_ROOT = os.path.abspath(os.path.dirname(__file__))
+if PROJECT_ROOT not in sys.path:
+    sys.path.insert(0, PROJECT_ROOT)
+
+from auth import verify_project_access
+verify_project_access(skip_if_testing=True)
 
 # Read Credentials & LLM Configuration from Environment
 USERNAME = os.getenv("SKILLRACK_USERNAME")
